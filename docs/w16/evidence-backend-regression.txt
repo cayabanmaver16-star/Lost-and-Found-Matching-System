@@ -1,0 +1,122 @@
+✔ H01 description boundaries: 4 rejected, 5 accepted, 300 accepted, 301 rejected, whitespace-only rejected (791.9637ms)
+✔ H02 location boundaries: 1 rejected, 2 accepted, 100 accepted, 101 rejected (577.5404ms)
+✔ H03 [D1] a user in UTC+8 may report an item lost "today" even while UTC is still the previous day (476.2131ms)
+✔ H04 [D9] event date older than 730 days is rejected; exactly 730 days accepted (453.4231ms)
+✔ H05 [D12] impossible calendar dates (Feb 30, month 13, day 00) are rejected (1038.3386ms)
+✔ H06 [D11] matching threshold: same category + same day with NO shared words is not a candidate (0.6477ms)
+✔ H07 list limit parameter: default, bounds and junk values never break the API (574.7966ms)
+✔ H08 content-type handling: charset parameter OK; wrong or missing body yields 422, never 500 (460.3766ms)
+✔ H09 CORS preflight: allowed origin gets methods/headers; disallowed origin gets none (329.867ms)
+✔ H10 [D5] Authorization scheme is case-insensitive; query-string tokens and sloppy headers are not accepted (383.2002ms)
+✔ H11 [D2] accents and case are ignored when matching (Cafe vs Café, nino vs niño) (471.0742ms)
+✔ H12 [D2] non-Latin descriptions are stored intact and different texts are NOT flagged as duplicates (376.5555ms)
+✔ H13 retry policy: exactly 3 attempts with 1000 ms then 2000 ms backoff, then manual queue (1.1948ms)
+✔ H14 identical concurrent submissions create exactly one report (duplicate control is race-free) (454.9571ms)
+✔ H15 [D4] double-clicking Re-send does not deliver twice (527.4024ms)
+✔ H16 [D3] a found item cannot be released to two different claimants (521.3304ms)
+✔ H17 [D6] persistence is atomic: a failed write leaves the previous data file intact (23.5973ms)
+✔ H18 [D6] persistence round-trip keeps ids monotonic; corrupt file falls back to last good backup or fails with a clear message (25.16ms)
+✔ H19 error path: an unexpected failure returns a generic 500, leaks nothing, and the server stays up (332.308ms)
+✔ H20 robustness sweep: 60 hostile requests never cause a 5xx and the server stays healthy (725.9478ms)
+✔ H21 [D7] login-failure tracking and token revocation lists are bounded (no memory growth under attack) (4066.9466ms)
+✔ H22 [D8] separation of duties: staff cannot verify or release a match for their own report (374.7041ms)
+✔ H23 end-to-end across roles: lost -> found -> notify -> verify -> release -> closed, with audit trail (440.2895ms)
+✔ H24 aging job is idempotent and ignores closed/disposed reports (392.3334ms)
+✔ H25 disposal review flow: aging flags -> custodian disposes -> report disposed; double-resolve 409; unknown id 404 (424.3792ms)
+✔ O01 liveness and readiness: /health and /ready are public, minimal and report ready on a healthy server (530.229ms)
+✔ O02 readiness turns 503 when a storage write really fails and recovers after the next successful write (899.6038ms)
+✔ O03 /api/metrics is staff-only and reports counts, latency percentiles, process and event-loop figures (647.3359ms)
+✔ O04 metrics expose no tokens, passwords or report text (519.2753ms)
+✔ O05 requests slower than SLOW_REQUEST_MS are logged as warnings with route and duration (700.5909ms)
+ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (C:\Project 18\lostfound\api\node_modules\express-rate-limit\dist\index.cjs:401:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (C:\Project 18\lostfound\api\node_modules\express-rate-limit\dist\index.cjs:726:22)
+    at Object.keyGenerator (C:\Project 18\lostfound\api\node_modules\express-rate-limit\dist\index.cjs:836:20)
+    at C:\Project 18\lostfound\api\node_modules\express-rate-limit\dist\index.cjs:926:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Project 18\lostfound\api\node_modules\express-rate-limit\dist\index.cjs:879:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+✔ O06 rate limiting: X-Forwarded-For is ignored unless TRUST_PROXY is set (cannot be spoofed); with a proxy, clients get separate buckets (884.6736ms)
+✔ P01 password hashing does not block the event loop: timer lag stays small during a burst of 8 concurrent logins (1389.8088ms)
+✔ P02 group commit: 40 concurrent writes are all acknowledged, all on disk, and share a small number of file writes (940.6786ms)
+✔ P03 durability gate: when a 201 is returned the report is already in the data file (847.0722ms)
+✔ P04 a failed batch write fails every request in the batch (500), then a later write succeeds (665.1411ms)
+✔ P05 readiness reports shutting_down once shutdown has begun; liveness is unaffected (341.6743ms)
+✔ P06 graceful shutdown: in-flight request completes and is persisted, new connections refused, exit 0, idempotent (804.01ms)
+✔ P07 performance guard: creating a report against 10,000 existing reports costs < 12 ms on average (was ~30 ms before caching) (476.5225ms)
+✔ P08 a stale temp file left by a crash mid-write is ignored and removed at startup (11.7485ms)
+✔ S01 no token -> 401 with WWW-Authenticate (534.5799ms)
+✔ S02 valid login returns a signed token and /me reflects the server-side role (574.9214ms)
+✔ S03 wrong password and unknown user give identical 401 (no user enumeration) (616.3697ms)
+✔ S04 account locks after 5 failures; correct password is then refused (429) (735.4218ms)
+✔ S05 altered token (role escalated, original signature) -> 401 (470.4193ms)
+✔ S06 token signed with a different secret -> 401 (470.8128ms)
+✔ S07 "alg: none" unsigned token -> 401 (364.5803ms)
+✔ S08 expired token -> 401 (and logged as expired) (348.3442ms)
+✔ S09 token with wrong audience/issuer -> 401 (341.535ms)
+✔ S10 token for a user whose role no longer matches the server record -> 401 (303.2174ms)
+✔ S11 legacy X-Role / X-User-Id headers grant nothing (380.5792ms)
+✔ S12 students get 403 on every staff endpoint (500.6294ms)
+✔ S13 object-level access: another student cannot read, list or match-view someone else's data (492.7316ms)
+✔ S14 logout revokes the token (384.6474ms)
+✔ S15 data minimisation: claimant match/notification views hide found id, verifier, notes and internals (456.2777ms)
+✔ S16 input validation: type confusion, control characters, bad dates -> 422 (364.572ms)
+✔ S17 oversized body -> 413; malformed identifiers -> 404 (404.9688ms)
+✔ S18 hostile text is stored inert and returned as data (no execution, no crash) (332.0733ms)
+✔ S19 mass assignment: client-supplied id/status/reporterId are ignored (352.4752ms)
+✔ S20 logs never contain passwords, tokens or report text (385.3883ms)
+✔ S21 logger redacts sensitive keys and JWT-looking strings even if a caller slips (0.368ms)
+✔ S22 security headers present and x-powered-by removed (266.7758ms)
+✔ S23 CORS: only configured origins are allowed (277.5717ms)
+✔ S24 global rate limit returns 429 (307.7542ms)
+✔ S25 configuration: production refuses missing/weak secret and missing TLS (1.8461ms)
+✔ S26 production disables test hooks (simulated delivery, clock override) (525.0512ms)
+✔ S27 passwords are stored only as salted scrypt hashes (212.7969ms)
+✔ S28 HTTPS: API is reachable over TLS with the dev certificate and rejects plain HTTP (94.4906ms)
+✔ T01 valid lost report is created (201) (776.3811ms)
+✔ T02 invalid report is rejected with field errors (422) (544.9424ms)
+✔ T03 duplicate report by same reporter is blocked (409) (489.4865ms)
+✔ T04 matching lost+found creates candidate and delivers notification (519.5932ms)
+✔ T05 different category never matches (604.5658ms)
+✔ T06 transient failure is retried and delivered on attempt 3 (recovered) (610.1819ms)
+✔ T07 permanent failure is routed to manual queue after bounded attempts (617.8642ms)
+✔ T08 verification then release closes both reports (548.3273ms)
+✔ T09 students cannot verify matches (403); anonymous gets 401 (370.6349ms)
+✔ T10 aging job: reminder at 30 days, disposal review at 90 days, each only once (499.5263ms)
+✔ T11 malformed JSON returns 400 with no stack trace (345.2996ms)
+✔ T12 claimants cannot see found-item link in their matches (448.6648ms)
+ℹ tests 79
+ℹ suites 0
+ℹ pass 79
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15346.4523
+ℹ start of coverage report
+ℹ ----------------------------------------------------------------------------------------------------------
+ℹ file                   | line % | branch % | funcs % | uncovered lines
+ℹ ----------------------------------------------------------------------------------------------------------
+ℹ src\app.js             | 100.00 |    88.35 |   95.65 | 
+ℹ src\auth.js            | 100.00 |    91.67 |  100.00 | 
+ℹ src\config.js          | 100.00 |    90.91 |   75.00 | 
+ℹ src\lifecycle.js       | 100.00 |    77.78 |   71.43 | 
+ℹ src\logger.js          | 100.00 |    90.48 |  100.00 | 
+ℹ src\matching.js        | 100.00 |    87.10 |  100.00 | 
+ℹ src\metrics.js         |  98.65 |    74.07 |   88.89 | 17
+ℹ src\notifier.js        | 100.00 |   100.00 |   75.00 | 
+ℹ src\store.js           |  97.58 |    91.84 |   92.31 | 102-104
+ℹ src\workflow.js        | 100.00 |    93.64 |   95.65 | 
+ℹ test\hardening.test.js | 100.00 |    96.51 |   96.00 | 
+ℹ test\helpers.js        | 100.00 |    96.15 |   90.91 | 
+ℹ test\ops.test.js       | 100.00 |    95.24 |   92.86 | 
+ℹ test\perf.test.js      | 100.00 |   100.00 |   87.50 | 
+ℹ test\security.test.js  | 100.00 |    97.87 |   87.23 | 
+ℹ test\workflow.test.js  | 100.00 |   100.00 |  100.00 | 
+ℹ ..\perf\lib.js         |  27.57 |   100.00 |   31.58 | 25-29 46-83 86-104 107-121 124-162 164-166 169-183
+ℹ ----------------------------------------------------------------------------------------------------------
+ℹ all files              |  92.79 |    92.64 |   89.40 |
+ℹ ----------------------------------------------------------------------------------------------------------
+ℹ end of coverage report

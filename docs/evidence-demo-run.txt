@@ -1,0 +1,15 @@
+SCENARIO 1: duplicate control
+first lost report -> 201
+same lost report again -> 409 (expected 409)
+SCENARIO 2: transient delivery failure, recovered by retry
+found report -> 201 candidate matches: 1
+SCENARIO 3: permanent delivery failure routed to manual queue
+manual queue: [{"id":"MQ-0010","kind":"notification_failure","refId":"N-0009","matchId":"M-0008","reason":"Recipient mailbox unavailable","status":"open","createdAt":"2026-11-07T16:00:50.875Z"}]
+SCENARIO 4: operator re-sends after fixing cause
+notification status -> delivered | queue item -> resolved
+SCENARIO 5: manual verification then release
+verify -> verified
+release -> released
+SCENARIO 6: aging job 40 days later
+{"reminded":["R-0007"],"disposalFlagged":[]}
+saved 17 log entries

@@ -1,0 +1,93 @@
+✔ H01 description boundaries: 4 rejected, 5 accepted, 300 accepted, 301 rejected, whitespace-only rejected (698.7069ms)
+✔ H02 location boundaries: 1 rejected, 2 accepted, 100 accepted, 101 rejected (484.2133ms)
+✔ H03 [D1] a user in UTC+8 may report an item lost "today" even while UTC is still the previous day (476.6938ms)
+✔ H04 [D9] event date older than 730 days is rejected; exactly 730 days accepted (551.0885ms)
+✔ H05 [D12] impossible calendar dates (Feb 30, month 13, day 00) are rejected (895.1872ms)
+✔ H06 [D11] matching threshold: same category + same day with NO shared words is not a candidate (0.7665ms)
+✔ H07 list limit parameter: default, bounds and junk values never break the API (472.8889ms)
+✔ H08 content-type handling: charset parameter OK; wrong or missing body yields 422, never 500 (425.3131ms)
+✔ H09 CORS preflight: allowed origin gets methods/headers; disallowed origin gets none (322.1754ms)
+✔ H10 [D5] Authorization scheme is case-insensitive; query-string tokens and sloppy headers are not accepted (423.6437ms)
+✔ H11 [D2] accents and case are ignored when matching (Cafe vs Café, nino vs niño) (452.2601ms)
+✔ H12 [D2] non-Latin descriptions are stored intact and different texts are NOT flagged as duplicates (405.1686ms)
+✔ H13 retry policy: exactly 3 attempts with 1000 ms then 2000 ms backoff, then manual queue (3.5219ms)
+✔ H14 identical concurrent submissions create exactly one report (duplicate control is race-free) (766.2956ms)
+✔ H15 [D4] double-clicking Re-send does not deliver twice (706.4626ms)
+✔ H16 [D3] a found item cannot be released to two different claimants (583.6121ms)
+✔ H17 [D6] persistence is atomic: a failed write leaves the previous data file intact (26.1081ms)
+✔ H18 [D6] persistence round-trip keeps ids monotonic; corrupt file falls back to last good backup or fails with a clear message (30.5974ms)
+✔ H19 error path: an unexpected failure returns a generic 500, leaks nothing, and the server stays up (394.2346ms)
+✔ H20 robustness sweep: 60 hostile requests never cause a 5xx and the server stays healthy (779.7103ms)
+✔ H21 [D7] login-failure tracking and token revocation lists are bounded (no memory growth under attack) (4191.1083ms)
+✔ H22 [D8] separation of duties: staff cannot verify or release a match for their own report (456.6465ms)
+✔ H23 end-to-end across roles: lost -> found -> notify -> verify -> release -> closed, with audit trail (497.4745ms)
+✔ H24 aging job is idempotent and ignores closed/disposed reports (402.9514ms)
+✔ H25 disposal review flow: aging flags -> custodian disposes -> report disposed; double-resolve 409; unknown id 404 (468.9756ms)
+✔ S01 no token -> 401 with WWW-Authenticate (478.6788ms)
+✔ S02 valid login returns a signed token and /me reflects the server-side role (569.5006ms)
+✔ S03 wrong password and unknown user give identical 401 (no user enumeration) (482.5887ms)
+✔ S04 account locks after 5 failures; correct password is then refused (429) (769.7775ms)
+✔ S05 altered token (role escalated, original signature) -> 401 (412.8162ms)
+✔ S06 token signed with a different secret -> 401 (374.0145ms)
+✔ S07 "alg: none" unsigned token -> 401 (306.1214ms)
+✔ S08 expired token -> 401 (and logged as expired) (316.811ms)
+✔ S09 token with wrong audience/issuer -> 401 (327.3913ms)
+✔ S10 token for a user whose role no longer matches the server record -> 401 (316.0082ms)
+✔ S11 legacy X-Role / X-User-Id headers grant nothing (399.2624ms)
+✔ S12 students get 403 on every staff endpoint (490.1543ms)
+✔ S13 object-level access: another student cannot read, list or match-view someone else's data (563.4883ms)
+✔ S14 logout revokes the token (406.7619ms)
+✔ S15 data minimisation: claimant match/notification views hide found id, verifier, notes and internals (513.2992ms)
+✔ S16 input validation: type confusion, control characters, bad dates -> 422 (421.9712ms)
+✔ S17 oversized body -> 413; malformed identifiers -> 404 (441.1305ms)
+✔ S18 hostile text is stored inert and returned as data (no execution, no crash) (351.5927ms)
+✔ S19 mass assignment: client-supplied id/status/reporterId are ignored (424.2699ms)
+✔ S20 logs never contain passwords, tokens or report text (409.6474ms)
+✔ S21 logger redacts sensitive keys and JWT-looking strings even if a caller slips (2.2804ms)
+✔ S22 security headers present and x-powered-by removed (295.0975ms)
+✔ S23 CORS: only configured origins are allowed (289.4658ms)
+✔ S24 global rate limit returns 429 (326.6788ms)
+✔ S25 configuration: production refuses missing/weak secret and missing TLS (1.4887ms)
+✔ S26 production disables test hooks (simulated delivery, clock override) (508.7096ms)
+✔ S27 passwords are stored only as salted scrypt hashes (218.7662ms)
+✔ S28 HTTPS: API is reachable over TLS with the dev certificate and rejects plain HTTP (109.1205ms)
+✔ T01 valid lost report is created (201) (660.8766ms)
+✔ T02 invalid report is rejected with field errors (422) (472.9647ms)
+✔ T03 duplicate report by same reporter is blocked (409) (458.2264ms)
+✔ T04 matching lost+found creates candidate and delivers notification (623.7646ms)
+✔ T05 different category never matches (502.6097ms)
+✔ T06 transient failure is retried and delivered on attempt 3 (recovered) (510.3446ms)
+✔ T07 permanent failure is routed to manual queue after bounded attempts (530.3521ms)
+✔ T08 verification then release closes both reports (563.6506ms)
+✔ T09 students cannot verify matches (403); anonymous gets 401 (386.6845ms)
+✔ T10 aging job: reminder at 30 days, disposal review at 90 days, each only once (488.3728ms)
+✔ T11 malformed JSON returns 400 with no stack trace (399.0169ms)
+✔ T12 claimants cannot see found-item link in their matches (459.1316ms)
+ℹ tests 65
+ℹ suites 0
+ℹ pass 65
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16051.2136
+ℹ start of coverage report
+ℹ -----------------------------------------------------------------------
+ℹ file                   | line % | branch % | funcs % | uncovered lines
+ℹ -----------------------------------------------------------------------
+ℹ src\app.js             | 100.00 |    90.91 |   95.00 | 
+ℹ src\auth.js            | 100.00 |    94.34 |  100.00 | 
+ℹ src\config.js          | 100.00 |    90.00 |   75.00 | 
+ℹ src\logger.js          | 100.00 |    85.71 |  100.00 | 
+ℹ src\matching.js        | 100.00 |    87.50 |  100.00 | 
+ℹ src\notifier.js        | 100.00 |   100.00 |   75.00 | 
+ℹ src\store.js           | 100.00 |    87.50 |  100.00 | 
+ℹ src\workflow.js        | 100.00 |    89.42 |   95.65 | 
+ℹ test\hardening.test.js | 100.00 |    96.55 |   97.33 | 
+ℹ test\helpers.js        | 100.00 |    96.00 |   90.91 | 
+ℹ test\security.test.js  | 100.00 |    97.87 |   87.23 | 
+ℹ test\workflow.test.js  | 100.00 |   100.00 |  100.00 | 
+ℹ -----------------------------------------------------------------------
+ℹ all files              | 100.00 |    92.80 |   94.35 |
+ℹ -----------------------------------------------------------------------
+ℹ end of coverage report

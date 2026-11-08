@@ -1,0 +1,40 @@
+== TRANSPORT ==
+HTTPS health: 200
+Plain HTTP to the same port: refused / no plaintext response
+Security headers: strict-transport-security=present, x-content-type-options=present, content-security-policy=present, x-frame-options=present
+X-Powered-By: absent
+
+== AUTHENTICATION ==
+No token on /api/reports -> 401 UNAUTHENTICATED
+Wrong password -> 401 INVALID_CREDENTIALS
+Unknown user -> 401 INVALID_CREDENTIALS   (identical response: no user enumeration)
+Valid student login -> token issued (3 parts, HS256)
+
+== ALTERED / EXPIRED / INVALID TOKENS ==
+Altered payload (role->custodian), original signature -> 401 UNAUTHENTICATED
+Signed with attacker secret -> 401 UNAUTHENTICATED
+alg:none unsigned token -> 401 UNAUTHENTICATED
+Correctly signed but expired token -> 401 UNAUTHENTICATED
+
+== AUTHORIZATION ==
+Student -> GET /api/manual-queue -> 403 FORBIDDEN
+Student -> GET /api/logs -> 403 FORBIDDEN
+Student sending X-Role: custodian header -> 403 FORBIDDEN
+Custodian -> GET /api/manual-queue -> 200
+Other student reading R-0001 (owned by stu1) -> 404 NOT_FOUND   (404, not 403: ids cannot be probed)
+
+== INPUT HANDLING ==
+description as JSON object -> 422 VALIDATION_FAILED
+20 KB body -> 413 PAYLOAD_TOO_LARGE
+
+== LOCKOUT ==
+5 failed logins for emp1, then CORRECT password -> 429 ACCOUNT_LOCKED
+
+== LOGOUT / REVOCATION ==
+sec1 token before logout -> 200
+same token after logout -> 401 UNAUTHENTICATED
+
+== LOG HYGIENE ==
+Server log contains any seeded password: false
+Server log contains any bearer token: false
+Server log contains report description text: false

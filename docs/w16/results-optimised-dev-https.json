@@ -1,0 +1,234 @@
+{
+  "label": "optimised",
+  "env": "dev-https",
+  "machine": "AMD Ryzen 5 7520U with Radeon Graphics, 8 logical CPUs, node v20.10.0, win32",
+  "startedAt": "2026-11-07T17:02:13.098Z",
+  "scenarios": {
+    "ordinary": {
+      "label": "ordinary",
+      "vus": 10,
+      "thinkMs": 800,
+      "durationSec": 26.3,
+      "requests": 299,
+      "throughputRps": 11.4,
+      "errors": {
+        "network": 0,
+        "timeout": 0,
+        "http5xx": 0,
+        "unexpected4xx": 0,
+        "http429": 0
+      },
+      "errorRatePct": 0,
+      "overall": {
+        "n": 299,
+        "p50": 6.3,
+        "p95": 15.4,
+        "p99": 20.5,
+        "max": 27.7,
+        "mean": 7.5
+      },
+      "perOp": {
+        "list_reports": {
+          "n": 81,
+          "p50": 6.2,
+          "p95": 8.7,
+          "p99": 10.2,
+          "max": 10.2,
+          "mean": 6.2
+        },
+        "create_lost": {
+          "n": 62,
+          "p50": 10.7,
+          "p95": 20.2,
+          "p99": 27.7,
+          "max": 27.7,
+          "mean": 11.6
+        },
+        "staff_queue": {
+          "n": 18,
+          "p50": 4.1,
+          "p95": 6.7,
+          "p99": 6.7,
+          "max": 6.7,
+          "mean": 4.3
+        },
+        "list_notifications": {
+          "n": 32,
+          "p50": 4.6,
+          "p95": 6.8,
+          "p99": 7,
+          "max": 7,
+          "mean": 4.9
+        },
+        "list_matches": {
+          "n": 37,
+          "p50": 4.9,
+          "p95": 8.3,
+          "p99": 12.1,
+          "max": 12.1,
+          "mean": 5
+        },
+        "create_found": {
+          "n": 39,
+          "p50": 11.2,
+          "p95": 20,
+          "p99": 20.5,
+          "max": 20.5,
+          "mean": 12.4
+        },
+        "me": {
+          "n": 9,
+          "p50": 5,
+          "p95": 6.2,
+          "p99": 6.2,
+          "max": 6.2,
+          "mean": 4.5
+        },
+        "health": {
+          "n": 21,
+          "p50": 3.3,
+          "p95": 4.8,
+          "p99": 6.3,
+          "max": 6.3,
+          "mean": 3.3
+        }
+      },
+      "server": {
+        "maxRssMB": 66.2,
+        "maxHeapMB": 17.7,
+        "maxCpuPct": 27.4,
+        "avgCpuPct": 7.5,
+        "maxLoopP99Ms": 29.9,
+        "maxLoopMaxMs": 38.1,
+        "maxInFlight": 2,
+        "samples": 26
+      },
+      "dbBytes": 237097
+    },
+    "peak": {
+      "label": "peak",
+      "vus": 50,
+      "thinkMs": 250,
+      "durationSec": 26.4,
+      "requests": 4367,
+      "throughputRps": 165.6,
+      "errors": {
+        "network": 0,
+        "timeout": 0,
+        "http5xx": 0,
+        "unexpected4xx": 0,
+        "http429": 0
+      },
+      "errorRatePct": 0,
+      "overall": {
+        "n": 4367,
+        "p50": 14.1,
+        "p95": 128,
+        "p99": 189.7,
+        "max": 288.7,
+        "mean": 32.7
+      },
+      "perOp": {
+        "list_matches": {
+          "n": 676,
+          "p50": 9.7,
+          "p95": 24.8,
+          "p99": 39.6,
+          "max": 141.2,
+          "mean": 12
+        },
+        "create_lost": {
+          "n": 876,
+          "p50": 60.4,
+          "p95": 167.5,
+          "p99": 229.9,
+          "max": 279.4,
+          "mean": 73.7
+        },
+        "health": {
+          "n": 421,
+          "p50": 8.4,
+          "p95": 26.1,
+          "p99": 83.2,
+          "max": 150.2,
+          "mean": 11.5
+        },
+        "staff_queue": {
+          "n": 203,
+          "p50": 9.4,
+          "p95": 26.6,
+          "p99": 81.2,
+          "max": 151,
+          "mean": 12.4
+        },
+        "list_reports": {
+          "n": 1087,
+          "p50": 10.3,
+          "p95": 25.8,
+          "p99": 86.5,
+          "max": 152.9,
+          "mean": 12.9
+        },
+        "create_found": {
+          "n": 543,
+          "p50": 62.2,
+          "p95": 165,
+          "p99": 222.5,
+          "max": 288.7,
+          "mean": 75.8
+        },
+        "list_notifications": {
+          "n": 440,
+          "p50": 10.2,
+          "p95": 28.8,
+          "p99": 101.2,
+          "max": 151.9,
+          "mean": 13.9
+        },
+        "me": {
+          "n": 121,
+          "p50": 9.1,
+          "p95": 26.2,
+          "p99": 48.6,
+          "max": 147.2,
+          "mean": 12.2
+        }
+      },
+      "server": {
+        "maxRssMB": 156.7,
+        "maxHeapMB": 79.9,
+        "maxCpuPct": 120.5,
+        "avgCpuPct": 98.1,
+        "maxLoopP99Ms": 68.7,
+        "maxLoopMaxMs": 76.4,
+        "maxInFlight": 12,
+        "samples": 26
+      },
+      "dbBytes": 4106767
+    },
+    "loginBurst": {
+      "concurrency": 40,
+      "rounds": 3,
+      "logins": 120,
+      "errors": 0,
+      "loginsPerSec": 55.6,
+      "login": {
+        "n": 120,
+        "p50": 403.5,
+        "p95": 729.8,
+        "p99": 762.3,
+        "max": 764.4,
+        "mean": 412.3
+      },
+      "healthProbeDuringBurst": {
+        "n": 60,
+        "p50": 4.7,
+        "p95": 57.1,
+        "p99": 107.8,
+        "max": 107.8,
+        "mean": 10.5
+      }
+    }
+  },
+  "finishedAt": "2026-11-07T17:03:11.690Z"
+}

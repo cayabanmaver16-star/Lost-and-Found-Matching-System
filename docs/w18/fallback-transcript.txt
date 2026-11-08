@@ -1,0 +1,77 @@
+LOST & FOUND - narrated run (fresh data, real server process, fictional accounts)
+API: http://localhost:7174   data file: C:\Project 18\lostfound\perf\work\rehearse\db.json
+
+[01] Platform is alive and describes itself
+     say: Liveness and readiness are separate probes; the API publishes its own contract.
+     [ok]   GET /health  ->  {"status":"ok"}
+     [ok]   GET /ready  ->  {"status":"ready"}
+     [ok]   GET /api/openapi.json  ->  19 paths, version 0.17.0
+
+[02] Sign in (and a wrong password)
+     say: Tokens are short-lived and signed; a wrong password and an unknown user get the same answer, so nobody can probe for accounts.
+     [ok]   wrong password -> 401  ->  Invalid user ID or password
+     [ok]   unknown user -> identical message
+     [ok]   five test accounts signed in
+
+[03] A student reports a lost wallet (validation first)
+     say: The server validates everything; the client checks are only a convenience.
+     [ok]   empty/short fields -> 422 with field messages  ->  description, location
+     [ok]   impossible date 2026-02-30 -> 422
+     [ok]   valid report accepted -> 201  ->  R-0001, no match yet: true
+     [ok]   same report again -> 409 duplicate, names the original  ->  DUPLICATE_REPORT
+
+[04] Security officer reports the found wallet: automatic match and notification
+     say: Matching runs when the report arrives; the owner is told, with retries if delivery fails.
+     [ok]   one candidate match created  ->  M-0004 score 81
+     [ok]   owner has a delivered notification  ->  candidate_match, attempts 1
+
+[05] What the owner can and cannot see
+     say: Data minimisation: the owner sees their own item and the outcome, never the finder or the found item.
+     [ok]   owner sees own item summary
+     [ok]   no found-item id, details, finder or verifier
+     [ok]   another student cannot open the owner's report -> 404 (existence not revealed)
+
+[06] Custodian reviews, then verifies with a recorded proof
+     say: A human decides, sees both items, and must write down the proof. Staff cannot decide their own item.
+     [ok]   custodian sees BOTH items side by side  ->  stu1 vs sec1
+     [ok]   verify without a note -> 422
+     [ok]   release before verification -> 409  ->  INVALID_STATE
+     [ok]   a student cannot verify -> 403
+     [ok]   verified with proof recorded
+     [ok]   released to the owner; both reports closed
+     [ok]   owner's report is closed
+
+[07] A notification that cannot be delivered reaches a human
+     say: Failures are bounded and visible: three attempts, then a person fixes it and re-sends.
+     [ok]   failure is in the manual queue with a reason  ->  Recipient mailbox unavailable
+     [ok]   custodian re-sends -> delivered, item resolved
+     [ok]   a second re-send is refused (no double delivery)  ->  404
+
+[08] A temporary delivery problem repairs itself
+     say: Transient failures are retried with 1 s then 2 s backoff, with no human involved.
+     [ok]   delivered on the third attempt  ->  3 attempts, request took 3.0 s (this is why delivery moves out of the request before a real gateway)
+
+[09] Security: forged, expired and unauthorised
+     say: Role comes only from the signed token; every attack here is refused and none of them changes anything.
+     [ok]   token with role changed to custodian -> 401
+     [ok]   no token -> 401
+     [ok]   student on a staff endpoint -> 403
+     [ok]   5 failed logins lock the account, even for the right password -> 429  ->  ACCOUNT_LOCKED
+     [ok]   signed-out token is refused (revocation)
+
+[10] Operations: metrics, audit trail and the aging job
+     say: The system watches itself; every state change is audited; unclaimed items escalate once.
+     [ok]   metrics: counts, latency percentiles, event-loop delay  ->  46 requests, busiest route POST /api/auth/login p95 100 ms, loop p99 20.48 ms
+     [ok]   metrics are staff-only -> 403 for a student
+     [ok]   audit trail covers create, verify, release  ->  8 entries
+     [ok]   30-day reminder raised once, not twice  ->  2 then 0
+     [ok]   90-day disposal review appears for staff  ->  2 item(s)
+
+[11] Durability: hard-kill the server, restart, nothing acknowledged is lost
+     say: A response is sent only after the data is on disk, so a crash cannot lose what a user was told succeeded.
+     [ok]   server restarted and is ready  ->  796 ms
+     [ok]   all acknowledged reports are still there  ->  6 of 6
+     [ok]   earlier verified/released case survived too
+
+Summary: 39 of 39 checks passed in 4.8 s
+Step timings: Platform is alive and descri 25 ms | Sign in (and a wrong passwor 358 ms | A student reports a lost wal 29 ms | Security officer reports the 15 ms | What the owner can and canno 8 ms | Custodian reviews, then veri 39 ms | A notification that cannot b 27 ms | A temporary delivery problem 3027 ms | Security 287 ms | Operations 32 ms | Durability 927 ms

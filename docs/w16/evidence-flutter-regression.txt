@@ -1,0 +1,39 @@
+Resolving dependencies...
+Downloading packages...
+  cupertino_icons 1.0.9 (2.0.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.4 available)
+Got dependencies!
+5 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading C:/Project 18/lostfound/app/test/ui_state_test.dart
+00:00 +0: C:/Project 18/lostfound/app/test/ui_state_test.dart: U07 sign-in failure shows the server message and stays on the sign-in screen
+00:02 +1: C:/Project 18/lostfound/app/test/ui_state_test.dart: U07 sign-in failure shows the server message and stays on the sign-in screen
+00:02 +2: C:/Project 18/lostfound/app/test/ui_state_test.dart: U07 sign-in failure shows the server message and stays on the sign-in screen
+00:02 +3: C:/Project 18/lostfound/app/test/widget_test.dart: W03 report form shows validation errors before calling API
+00:02 +4: C:/Project 18/lostfound/app/test/widget_test.dart: W03 report form shows validation errors before calling API
+00:02 +5: C:/Project 18/lostfound/app/test/ui_state_test.dart: U09 successful sign-in opens the home shell; student has no Manual queue destination
+00:02 +6: C:/Project 18/lostfound/app/test/ui_state_test.dart: U09 successful sign-in opens the home shell; student has no Manual queue destination
+00:02 +7: C:/Project 18/lostfound/app/test/ui_state_test.dart: U09 successful sign-in opens the home shell; student has no Manual queue destination
+00:02 +8: C:/Project 18/lostfound/app/test/ui_state_test.dart: U09 successful sign-in opens the home shell; student has no Manual queue destination
+00:03 +9: C:/Project 18/lostfound/app/test/ui_state_test.dart: U09 successful sign-in opens the home shell; student has no Manual queue destination
+00:03 +10: C:/Project 18/lostfound/app/test/ui_state_test.dart: U10 reports list shows a loading indicator first, then the data
+00:03 +11: C:/Project 18/lostfound/app/test/ui_state_test.dart: U11 server error (500) shows "Server error" and Try again recovers
+00:03 +12: C:/Project 18/lostfound/app/test/ui_state_test.dart: U12 [D15] a non-JSON gateway error page (502 HTML) is shown as a server error, not a crash
+00:03 +13: C:/Project 18/lostfound/app/test/ui_state_test.dart: U13 network failure while loading shows Network problem with retry
+00:03 +14: C:/Project 18/lostfound/app/test/ui_state_test.dart: U14 students never see Verify/Reject/Release controls
+00:03 +15: C:/Project 18/lostfound/app/test/ui_state_test.dart: U15 staff see Verify/Reject on a candidate and Release on a verified match
+00:03 +16: C:/Project 18/lostfound/app/test/ui_state_test.dart: U16 tapping Verify posts the decision to the right endpoint and refreshes the list
+00:04 +17: C:/Project 18/lostfound/app/test/ui_state_test.dart: U17 conflict of interest (403) on Verify is shown to the user and the list is unchanged
+00:04 +18: C:/Project 18/lostfound/app/test/ui_state_test.dart: U18 manual queue returns 403 for a student: "Not authorized" and no retry button
+00:04 +19: C:/Project 18/lostfound/app/test/ui_state_test.dart: U19 manual queue lists a failed notification with a Re-send action
+00:04 +20: C:/Project 18/lostfound/app/test/ui_state_test.dart: U20 report form shows server-side field errors under the fields (422)
+00:04 +21: C:/Project 18/lostfound/app/test/ui_state_test.dart: U21 duplicate report (409) is explained to the user
+00:05 +22: C:/Project 18/lostfound/app/test/ui_state_test.dart: U22 successful submit shows the match count and clears the form
+00:05 +23: C:/Project 18/lostfound/app/test/ui_state_test.dart: U23 submit button is disabled with a progress indicator while the request is in flight
+00:05 +24: C:/Project 18/lostfound/app/test/ui_state_test.dart: U24 network failure on submit shows an error message and re-enables the button
+00:06 +25: C:/Project 18/lostfound/app/test/ui_state_test.dart: U25 responsive layout (wide, 1000 px): navigation rail; staff get the Manual queue tab
+00:06 +26: C:/Project 18/lostfound/app/test/ui_state_test.dart: U26 responsive layout (phone, 400 px): bottom bar, no overflow on the report form
+00:06 +27: All tests passed!

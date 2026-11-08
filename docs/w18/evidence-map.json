@@ -1,0 +1,667 @@
+{
+  "title": "Evidence map: what is claimed, where the proof is, where it is shown in the demonstration",
+  "demoSegments": {
+    "scope": "0:00 Problem and scope",
+    "arch": "1:00 Architecture",
+    "live": "2:30 Live walkthrough",
+    "resilience": "8:00 Resilience",
+    "security": "10:00 Security",
+    "evidence": "12:00 Evidence map",
+    "recommend": "14:00 Recommendation"
+  },
+  "rows": [
+    {
+      "id": "SA7-1",
+      "assessment": "SA7 (Week 13)",
+      "claim": "A bounded workflow with clear boundary, roles and state model",
+      "artifacts": [
+        "docs/Project18_Week13_SA7_Evidence.docx",
+        "docs/w17/diagrams/state-machines.png",
+        "docs/w17/diagrams/data-flow.png"
+      ],
+      "tests": [
+        "T01",
+        "T08"
+      ],
+      "adr": [],
+      "demo": "live"
+    },
+    {
+      "id": "SA7-2",
+      "assessment": "SA7 (Week 13)",
+      "claim": "Justified triggers: event-driven matching and notification, scheduled aging job",
+      "artifacts": [
+        "docs/Project18_Week13_SA7_Evidence.docx",
+        "api/src/workflow.js",
+        "api/src/server.js"
+      ],
+      "tests": [
+        "T04",
+        "T10",
+        "H24"
+      ],
+      "adr": [
+        "ADR-002"
+      ],
+      "demo": "live"
+    },
+    {
+      "id": "SA7-3",
+      "assessment": "SA7 (Week 13)",
+      "claim": "Flutter Web screen flow with loading, empty, validation, authorisation, network and server-error states",
+      "artifacts": [
+        "app/lib/main.dart",
+        "app/test/ui_state_test.dart",
+        "docs/w17/screens/UAT-02a-validation-errors.png"
+      ],
+      "tests": [
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U18",
+        "U20"
+      ],
+      "adr": [],
+      "demo": "live"
+    },
+    {
+      "id": "SA7-4",
+      "assessment": "SA7 (Week 13)",
+      "claim": "Bounded retries, recovery and manual handling of permanent failure",
+      "artifacts": [
+        "api/src/notifier.js",
+        "docs/evidence-demo-run.txt",
+        "docs/evidence-structured-logs.json",
+        "docs/w18/fallback-transcript.txt"
+      ],
+      "tests": [
+        "T06",
+        "T07",
+        "H13",
+        "H15"
+      ],
+      "adr": [
+        "ADR-002"
+      ],
+      "demo": "resilience"
+    },
+    {
+      "id": "SA7-5",
+      "assessment": "SA7 (Week 13)",
+      "claim": "Structured logs that never contain credentials, tokens or report text",
+      "artifacts": [
+        "api/src/logger.js",
+        "docs/evidence-structured-logs.json"
+      ],
+      "tests": [
+        "S20",
+        "S21"
+      ],
+      "adr": [],
+      "demo": "security"
+    },
+    {
+      "id": "SA7-6",
+      "assessment": "SA7 (Week 13)",
+      "claim": "Maintainable structure: small modules, injectable delivery and clock, documented decisions",
+      "artifacts": [
+        "CONTRIBUTING.md",
+        "docs/w17/MAINTENANCE.md",
+        "api/src"
+      ],
+      "tests": [
+        "P07"
+      ],
+      "adr": [],
+      "demo": "evidence"
+    },
+    {
+      "id": "SA8-1",
+      "assessment": "SA8 / IA5 (Week 14)",
+      "claim": "Protected configuration: secrets only from the environment, production refuses unsafe settings",
+      "artifacts": [
+        "api/src/config.js",
+        "api/.env.example",
+        "docs/Project18_Week14_SA8_IA5_Evidence.docx"
+      ],
+      "tests": [
+        "S25",
+        "S26"
+      ],
+      "adr": [
+        "ADR-003"
+      ],
+      "demo": "security"
+    },
+    {
+      "id": "SA8-2",
+      "assessment": "SA8 / IA5 (Week 14)",
+      "claim": "HTTPS (TLS 1.2+) with HSTS and security headers; strict CORS",
+      "artifacts": [
+        "api/src/server.js",
+        "api/scripts/gen-dev-cert.sh",
+        "docs/evidence-w14-security-run.txt"
+      ],
+      "tests": [
+        "S22",
+        "S23",
+        "S28"
+      ],
+      "adr": [
+        "ADR-004"
+      ],
+      "demo": "security"
+    },
+    {
+      "id": "SA8-3",
+      "assessment": "SA8 / IA5 (Week 14)",
+      "claim": "Authentication and access control: signed expiring revocable tokens, roles only from the token, ownership checks",
+      "artifacts": [
+        "api/src/auth.js",
+        "api/src/app.js",
+        "docs/evidence-w14-security-logs.json"
+      ],
+      "tests": [
+        "S01",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "H22"
+      ],
+      "adr": [
+        "ADR-003"
+      ],
+      "demo": "security"
+    },
+    {
+      "id": "SA8-4",
+      "assessment": "SA8 / IA5 (Week 14)",
+      "claim": "Cryptography only where justified: scrypt for passwords, HMAC-signed tokens, TLS in transit; no field encryption (reasoned)",
+      "artifacts": [
+        "docs/Project18_Week14_SA8_IA5_Evidence.docx",
+        "api/src/auth.js"
+      ],
+      "tests": [
+        "S27",
+        "P01"
+      ],
+      "adr": [
+        "ADR-003"
+      ],
+      "demo": "security"
+    },
+    {
+      "id": "SA8-5",
+      "assessment": "SA8 / IA5 (Week 14)",
+      "claim": "Adverse tests: altered, expired, invalid and unauthorised behaviour demonstrated live and in 28 automated tests",
+      "artifacts": [
+        "api/test/security.test.js",
+        "docs/evidence-w14-security-run.txt",
+        "api/demo-security.js"
+      ],
+      "tests": [
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "adr": [],
+      "demo": "security"
+    },
+    {
+      "id": "SA8-6",
+      "assessment": "SA8 / IA5 (Week 14)",
+      "claim": "Residual risk documented and kept up to date",
+      "artifacts": [
+        "docs/Project18_Week14_SA8_IA5_Evidence.docx",
+        "docs/w17/KNOWN_LIMITATIONS.md"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "recommend"
+    },
+    {
+      "id": "IA6-1",
+      "assessment": "IA6 (Week 15)",
+      "claim": "Requirements-to-tests traceability, machine-checked",
+      "artifacts": [
+        "docs/traceability.json",
+        "scripts/trace-check.js",
+        "docs/w15/traceability-matrix.md",
+        "docs/w15/traceability-summary.json"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "evidence"
+    },
+    {
+      "id": "IA6-2",
+      "assessment": "IA6 (Week 15)",
+      "claim": "Functional, invalid-input, boundary, interoperability, authentication, authorisation, reliability and security tests, API and Flutter",
+      "artifacts": [
+        "api/test/workflow.test.js",
+        "api/test/security.test.js",
+        "api/test/hardening.test.js",
+        "app/test/ui_state_test.dart",
+        "app/test/widget_test.dart"
+      ],
+      "tests": [
+        "T01",
+        "S01",
+        "H01",
+        "H08",
+        "H13",
+        "H16",
+        "W01",
+        "U07"
+      ],
+      "adr": [],
+      "demo": "evidence"
+    },
+    {
+      "id": "IA6-3",
+      "assessment": "IA6 (Week 15)",
+      "claim": "Defects found by failing tests first, fixed, and the original failures re-run",
+      "artifacts": [
+        "docs/Project18_Week15_IA6_Hardening_Report.docx",
+        "docs/w15/evidence-before-fix.txt",
+        "docs/w15/evidence-after-fix.txt",
+        "docs/w15/evidence-flutter-before-fix.txt",
+        "docs/w15/evidence-flutter-after-fix.txt"
+      ],
+      "tests": [
+        "H03",
+        "H05",
+        "H16",
+        "H17",
+        "U12",
+        "U16"
+      ],
+      "adr": [],
+      "demo": "evidence"
+    },
+    {
+      "id": "IA6-4",
+      "assessment": "IA6 (Week 15)",
+      "claim": "Regression evidence preserved and a hardening report written",
+      "artifacts": [
+        "docs/w15/evidence-regression-run.txt",
+        "docs/Project18_Week15_IA6_Hardening_Report.docx"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "evidence"
+    },
+    {
+      "id": "W16-1",
+      "assessment": "Week 16 evaluation",
+      "claim": "Ordinary, peak, login-burst, data-growth and stress workload models with targets set in advance",
+      "artifacts": [
+        "docs/Project18_Week16_Performance_Deployment_Evaluation.docx",
+        "perf/run-suite.js",
+        "perf/lib.js"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "evidence"
+    },
+    {
+      "id": "W16-2",
+      "assessment": "Week 16 evaluation",
+      "claim": "Response-time, throughput, error and resource evidence before and after fixes (peak 52 to 170 req/s)",
+      "artifacts": [
+        "docs/w16/results-baseline-dev-http.json",
+        "docs/w16/results-optimised-dev-http.json",
+        "perf/profile.js"
+      ],
+      "tests": [
+        "P01",
+        "P02",
+        "P07"
+      ],
+      "adr": [
+        "ADR-001"
+      ],
+      "demo": "evidence"
+    },
+    {
+      "id": "W16-3",
+      "assessment": "Week 16 evaluation",
+      "claim": "Monitoring and health signals: liveness, readiness, staff-only metrics, slow-request log, graceful shutdown",
+      "artifacts": [
+        "api/src/metrics.js",
+        "api/src/lifecycle.js",
+        "docs/w16/sample-monitoring.json"
+      ],
+      "tests": [
+        "O01",
+        "O02",
+        "O03",
+        "O04",
+        "O05",
+        "P05",
+        "P06"
+      ],
+      "adr": [],
+      "demo": "security"
+    },
+    {
+      "id": "W16-4",
+      "assessment": "Week 16 evaluation",
+      "claim": "Environment comparison: HTTP, HTTPS and production mode; front-end bundle size",
+      "artifacts": [
+        "docs/w16/results-optimised-dev-https.json",
+        "docs/w16/results-optimised-prod-https.json",
+        "docs/w16/frontend-bundle.json"
+      ],
+      "tests": [
+        "D01",
+        "D03",
+        "D05",
+        "D06"
+      ],
+      "adr": [
+        "ADR-004"
+      ],
+      "demo": "evidence"
+    },
+    {
+      "id": "W16-5",
+      "assessment": "Week 16 evaluation",
+      "claim": "Rollback and recovery rehearsed: hard-kill durability, corruption recovery, bad-release rollback",
+      "artifacts": [
+        "perf/rehearse.js",
+        "docs/w16/rehearsal-results.json",
+        "docs/w16/console-rehearsal.txt",
+        "docs/w16/RUNBOOK.md"
+      ],
+      "tests": [
+        "P03",
+        "P04",
+        "P08",
+        "H17",
+        "H18"
+      ],
+      "adr": [
+        "ADR-001",
+        "ADR-004"
+      ],
+      "demo": "resilience"
+    },
+    {
+      "id": "W16-6",
+      "assessment": "Week 16 evaluation",
+      "claim": "Conditional readiness recommendation with limitations",
+      "artifacts": [
+        "docs/Project18_Week16_Performance_Deployment_Evaluation.docx",
+        "docs/w17/KNOWN_LIMITATIONS.md"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "recommend"
+    },
+    {
+      "id": "SA9-1",
+      "assessment": "SA9 (Week 17)",
+      "claim": "UAT with representative controlled scenarios; findings and dispositions; fixes retested",
+      "artifacts": [
+        "docs/Project18_Week17_SA9_UAT_and_Evaluation.docx",
+        "uat/run-uat.js",
+        "docs/w17/uat-results-before-fixes.md",
+        "docs/w17/uat-results-after-fixes.md",
+        "docs/w17/screens"
+      ],
+      "tests": [
+        "A01",
+        "A03",
+        "A05",
+        "U27",
+        "U28",
+        "U29",
+        "U31",
+        "U36"
+      ],
+      "adr": [
+        "ADR-005"
+      ],
+      "demo": "live"
+    },
+    {
+      "id": "SA9-2",
+      "assessment": "SA9 (Week 17)",
+      "claim": "OpenAPI documentation proven equal to the running API in both directions",
+      "artifacts": [
+        "api/openapi/spec.js",
+        "docs/w17/openapi.yaml",
+        "docs/w17/openapi.json",
+        "docs/w17/contract-mutation-check.txt",
+        "scripts/mutation-check-openapi.js"
+      ],
+      "tests": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "adr": [
+        "ADR-006"
+      ],
+      "demo": "evidence"
+    },
+    {
+      "id": "AS3-1",
+      "assessment": "AS3 (Week 17)",
+      "claim": "Final architecture, data flow and state machines with trust boundaries",
+      "artifacts": [
+        "docs/w17/diagrams/architecture.png",
+        "docs/w17/diagrams/data-flow.png",
+        "docs/w17/diagrams/state-machines.png",
+        "scripts/gen-diagrams.js"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "arch"
+    },
+    {
+      "id": "AS3-2",
+      "assessment": "AS3 (Week 17)",
+      "claim": "Alternatives evaluated and decisions recorded",
+      "artifacts": [
+        "docs/w17/adr/ADR-001-storage.md",
+        "docs/w17/adr/ADR-002-notifications.md",
+        "docs/w17/adr/ADR-003-authentication.md",
+        "docs/w17/adr/ADR-004-deployment.md",
+        "docs/w17/adr/ADR-005-matching.md",
+        "docs/w17/adr/ADR-006-api-contract.md"
+      ],
+      "tests": [],
+      "adr": [
+        "ADR-001",
+        "ADR-002",
+        "ADR-003",
+        "ADR-004",
+        "ADR-005",
+        "ADR-006"
+      ],
+      "demo": "arch"
+    },
+    {
+      "id": "AS3-3",
+      "assessment": "AS3 (Week 17)",
+      "claim": "Repository guidance, known limitations, maintenance plan, final recommendation",
+      "artifacts": [
+        "README.md",
+        "CONTRIBUTING.md",
+        "CHANGELOG.md",
+        "docs/w17/KNOWN_LIMITATIONS.md",
+        "docs/w17/MAINTENANCE.md",
+        "docs/Project18_Week17_AS3_Advanced_Technical_Report.docx"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "recommend"
+    },
+    {
+      "id": "E3-1",
+      "assessment": "E3 (Week 18)",
+      "claim": "Final solution that runs from a clean checkout with documented commands",
+      "artifacts": [
+        "README.md",
+        "api/package.json",
+        "app/pubspec.yaml"
+      ],
+      "tests": [
+        "T01",
+        "S01",
+        "U09"
+      ],
+      "adr": [],
+      "demo": "live"
+    },
+    {
+      "id": "E3-2",
+      "assessment": "E3 (Week 18)",
+      "claim": "Demonstration of the complete workflow with controlled data",
+      "artifacts": [
+        "docs/w18/DEMO_SCRIPT.md",
+        "demo/start-demo.js",
+        "demo/seed.js",
+        "demo/preflight.js"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "live"
+    },
+    {
+      "id": "E3-3",
+      "assessment": "E3 (Week 18)",
+      "claim": "Prepared fallback at four levels, rehearsed",
+      "artifacts": [
+        "docs/w18/FALLBACK_PLAN.md",
+        "demo/rehearse.js",
+        "docs/w18/fallback-transcript.txt"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "live"
+    },
+    {
+      "id": "E3-4",
+      "assessment": "E3 (Week 18)",
+      "claim": "Evidence map, portfolio and delivery check",
+      "artifacts": [
+        "docs/w18/EVIDENCE_MAP.md",
+        "docs/w18/evidence-map.json",
+        "scripts/check-evidence-map.js",
+        "scripts/final-check.js",
+        "docs/w18/FINAL_DELIVERY_CHECK.md",
+        "api/scripts/run-tests.js",
+        "scripts/make-bundle.js"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "evidence"
+    },
+    {
+      "id": "E3-5",
+      "assessment": "E3 (Week 18)",
+      "claim": "Individual technical viva preparation and contribution reflection (to be completed by the student in their own words)",
+      "artifacts": [
+        "docs/w18/VIVA_PREP.md",
+        "docs/w18/REFLECTION_TEMPLATE.md"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "recommend"
+    },
+    {
+      "id": "MD-1",
+      "assessment": "Minimum final deliverables",
+      "claim": "Flutter Web source and responsive workflow evidence",
+      "artifacts": [
+        "app/lib/main.dart",
+        "app/lib/api.dart",
+        "app/test/ui_state_test.dart",
+        "docs/w17/screens"
+      ],
+      "tests": [
+        "U25",
+        "U26"
+      ],
+      "adr": [],
+      "demo": "live"
+    },
+    {
+      "id": "MD-2",
+      "assessment": "Minimum final deliverables",
+      "claim": "Backend API source, configuration example without secrets, OpenAPI documentation",
+      "artifacts": [
+        "api/src",
+        "api/.env.example",
+        "api/openapi/spec.js",
+        "docs/w17/openapi.yaml"
+      ],
+      "tests": [
+        "C01",
+        "C02"
+      ],
+      "adr": [],
+      "demo": "evidence"
+    },
+    {
+      "id": "MD-3",
+      "assessment": "Minimum final deliverables",
+      "claim": "Architecture and data-flow diagrams with decision records",
+      "artifacts": [
+        "docs/w17/diagrams",
+        "docs/w17/adr"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "arch"
+    },
+    {
+      "id": "MD-4",
+      "assessment": "Minimum final deliverables",
+      "claim": "Automation, security, testing, performance, deployment, UAT and recovery evidence",
+      "artifacts": [
+        "docs/Project18_Week13_SA7_Evidence.docx",
+        "docs/Project18_Week14_SA8_IA5_Evidence.docx",
+        "docs/Project18_Week15_IA6_Hardening_Report.docx",
+        "docs/Project18_Week16_Performance_Deployment_Evaluation.docx",
+        "docs/Project18_Week17_SA9_UAT_and_Evaluation.docx",
+        "docs/Project18_Week17_AS3_Advanced_Technical_Report.docx"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "evidence"
+    },
+    {
+      "id": "MD-5",
+      "assessment": "Minimum final deliverables",
+      "claim": "README, known limitations, residual risks, maintenance plan and individual contribution records",
+      "artifacts": [
+        "README.md",
+        "docs/w17/KNOWN_LIMITATIONS.md",
+        "docs/w17/MAINTENANCE.md",
+        "docs/w18/REFLECTION_TEMPLATE.md"
+      ],
+      "tests": [],
+      "adr": [],
+      "demo": "recommend"
+    }
+  ]
+}

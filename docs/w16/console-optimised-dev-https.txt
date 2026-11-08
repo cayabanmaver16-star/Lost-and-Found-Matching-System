@@ -1,0 +1,4 @@
+ordinary           vus= 10 rps=  11.4 p50=   6.3 p95=   15.4 p99=   20.5 max=   27.7 err=0% cpu(max)=27.4% rss=66.2MB loopP99=29.9ms
+peak               vus= 50 rps= 165.6 p50=  14.1 p95=    128 p99=  189.7 max=  288.7 err=0% cpu(max)=120.5% rss=156.7MB loopP99=68.7ms
+login burst        c=40 x3: logins/s=55.6 login p50=403.5 p95=729.8 max=764.4 | /health during burst p50=4.7 p95=57.1 max=107.8 errors=0
+saved C:\Project 18\lostfound\docs\w16\results-optimised-dev-https.json

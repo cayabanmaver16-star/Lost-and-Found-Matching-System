@@ -1,0 +1,88 @@
+{
+  "ready": {
+    "status": 200,
+    "body": {
+      "status": "ready"
+    }
+  },
+  "metrics": {
+    "uptimeSec": 1,
+    "requests": {
+      "total": 46,
+      "inFlight": 1,
+      "byStatus": {
+        "2xx": 43,
+        "3xx": 0,
+        "4xx": 3,
+        "5xx": 0
+      }
+    },
+    "routes": [
+      {
+        "route": "GET /api/reports",
+        "count": 31,
+        "avgMs": 2.52,
+        "maxMs": 3.8,
+        "p50Ms": 5,
+        "p95Ms": 5,
+        "p99Ms": 5,
+        "clientErrors": 1,
+        "serverErrors": 0
+      },
+      {
+        "route": "POST /api/reports",
+        "count": 7,
+        "avgMs": 8.4,
+        "maxMs": 16.6,
+        "p50Ms": 10,
+        "p95Ms": 25,
+        "p99Ms": 25,
+        "clientErrors": 1,
+        "serverErrors": 0
+      },
+      {
+        "route": "POST /api/auth/login",
+        "count": 5,
+        "avgMs": 61.71,
+        "maxMs": 93.5,
+        "p50Ms": 100,
+        "p95Ms": 100,
+        "p99Ms": 100,
+        "clientErrors": 0,
+        "serverErrors": 0
+      },
+      {
+        "route": "GET /ready",
+        "count": 2,
+        "avgMs": 8.68,
+        "maxMs": 15.4,
+        "p50Ms": 5,
+        "p95Ms": 25,
+        "p99Ms": 25,
+        "clientErrors": 0,
+        "serverErrors": 0
+      },
+      {
+        "route": "GET /api/manual-queue",
+        "count": 1,
+        "avgMs": 2.56,
+        "maxMs": 2.6,
+        "p50Ms": 5,
+        "p95Ms": 5,
+        "p99Ms": 5,
+        "clientErrors": 1,
+        "serverErrors": 0
+      }
+    ],
+    "process": {
+      "rssMB": 55.5,
+      "heapUsedMB": 11.3,
+      "cpuPercentSinceLast": 68.8
+    },
+    "eventLoop": {
+      "meanMs": 15.51,
+      "p99Ms": 39.35,
+      "maxMs": 39.35
+    }
+  }
+}

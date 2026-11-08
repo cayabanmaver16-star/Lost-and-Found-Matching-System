@@ -1,0 +1,11 @@
+CAUGHT  Report.status loses "closed"   (failing: C03, C05)
+CAUGHT  Report.status loses "disposed"   (failing: C03, C05)
+CAUGHT  ClaimantMatch wrongly requires foundId   (failing: C03, C05)
+CAUGHT  Match.score documented as string   (failing: C03, C05)
+CAUGHT  /api/audit documented as open to students   (failing: C06)
+CAUGHT  a phantom operation is documented   (failing: C02, C05, C06)
+CAUGHT  409 removed from the verify operation   (failing: C03, C05)
+CAUGHT  Notification.attempts documented as boolean   (failing: C03, C05)
+
+8 of 8 deliberate documentation errors were caught.
+Original spec restored; contract tests on the restored spec: all pass.

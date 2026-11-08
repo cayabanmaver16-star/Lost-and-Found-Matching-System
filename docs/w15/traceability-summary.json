@@ -1,0 +1,945 @@
+{
+  "requirements": 32,
+  "tests": 134,
+  "perSuite": {
+    "API functional": 12,
+    "API security": 28,
+    "API hardening / integration": 25,
+    "API operability": 6,
+    "API performance / lifecycle": 8,
+    "API acceptance (UAT fixes)": 6,
+    "API contract (OpenAPI)": 6,
+    "Static host (deployment)": 6,
+    "Flutter widget": 7,
+    "Flutter UI state": 30
+  },
+  "byReq": {
+    "FR-01": [
+      "H01",
+      "H02",
+      "H03",
+      "H04",
+      "H05",
+      "P03",
+      "T01",
+      "T02"
+    ],
+    "FR-02": [
+      "H12",
+      "H14",
+      "T03"
+    ],
+    "FR-03": [
+      "A01",
+      "H06",
+      "H11",
+      "H23",
+      "T04",
+      "T05"
+    ],
+    "FR-04": [
+      "H13",
+      "H23",
+      "T04",
+      "T06",
+      "T07"
+    ],
+    "FR-05": [
+      "A03",
+      "A04",
+      "H16",
+      "H22",
+      "H23",
+      "T08",
+      "U29",
+      "U30"
+    ],
+    "FR-06": [
+      "A06",
+      "H24",
+      "H25",
+      "T10"
+    ],
+    "FR-07": [
+      "H15",
+      "H25",
+      "T07"
+    ],
+    "FR-08": [
+      "A03",
+      "A04",
+      "H23"
+    ],
+    "SR-01": [
+      "C04",
+      "H10",
+      "H21",
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06",
+      "S07",
+      "S08",
+      "S09",
+      "S10",
+      "S14",
+      "S27"
+    ],
+    "SR-02": [
+      "C06",
+      "H22",
+      "O03",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "T09",
+      "U14",
+      "U18"
+    ],
+    "SR-03": [
+      "H09",
+      "O06",
+      "S22",
+      "S23",
+      "S28"
+    ],
+    "SR-04": [
+      "S25",
+      "S26"
+    ],
+    "SR-05": [
+      "A03",
+      "H08",
+      "H20",
+      "S16",
+      "S17",
+      "S18",
+      "S19",
+      "T02",
+      "T11"
+    ],
+    "SR-06": [
+      "H19",
+      "O04",
+      "S08",
+      "S20",
+      "S21"
+    ],
+    "SR-07": [
+      "A05",
+      "S13",
+      "S15",
+      "T12",
+      "U32"
+    ],
+    "NF-01": [
+      "H13",
+      "H14",
+      "H15",
+      "H16",
+      "H17",
+      "H18",
+      "H19",
+      "H20",
+      "T11",
+      "U36"
+    ],
+    "NF-02": [
+      "C03",
+      "H08",
+      "H09",
+      "H10",
+      "H11",
+      "H12",
+      "S23"
+    ],
+    "NF-03": [
+      "C04",
+      "D05",
+      "H07",
+      "H21",
+      "O06",
+      "S04",
+      "S17",
+      "S24"
+    ],
+    "UI-01": [
+      "U07",
+      "U08",
+      "U09",
+      "W01",
+      "W02",
+      "W05"
+    ],
+    "UI-02": [
+      "U20",
+      "U21",
+      "U22",
+      "U23",
+      "U24",
+      "W03"
+    ],
+    "UI-03": [
+      "U14",
+      "U15",
+      "U16",
+      "U17",
+      "U19"
+    ],
+    "UI-04": [
+      "U10",
+      "U11",
+      "U12",
+      "U13",
+      "U18",
+      "U24",
+      "W04",
+      "W05",
+      "W06",
+      "W07"
+    ],
+    "UI-05": [
+      "U09",
+      "U25",
+      "U26"
+    ],
+    "NF-04": [
+      "O01",
+      "O02",
+      "O03",
+      "O04",
+      "O05",
+      "P04",
+      "P05"
+    ],
+    "NF-05": [
+      "D06",
+      "P01",
+      "P02",
+      "P07"
+    ],
+    "NF-06": [
+      "O02",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P08"
+    ],
+    "UI-06": [
+      "A05",
+      "U27",
+      "U28",
+      "U29",
+      "U30",
+      "U31",
+      "U36"
+    ],
+    "UI-07": [
+      "A06",
+      "U32",
+      "U33",
+      "U35"
+    ],
+    "UI-08": [
+      "U34"
+    ],
+    "FR-09": [
+      "A01",
+      "A02"
+    ],
+    "DOC-01": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06"
+    ],
+    "DEP-01": [
+      "D01",
+      "D02",
+      "D03",
+      "D04",
+      "D05",
+      "D06"
+    ]
+  },
+  "found": {
+    "T01": {
+      "file": "api/test/workflow.test.js",
+      "kind": "API functional",
+      "title": "valid lost report is created (201)"
+    },
+    "T02": {
+      "file": "api/test/workflow.test.js",
+      "kind": "API functional",
+      "title": "invalid report is rejected with field errors (422)"
+    },
+    "T03": {
+      "file": "api/test/workflow.test.js",
+      "kind": "API functional",
+      "title": "duplicate report by same reporter is blocked (409)"
+    },
+    "T04": {
+      "file": "api/test/workflow.test.js",
+      "kind": "API functional",
+      "title": "matching lost+found creates candidate and delivers notification"
+    },
+    "T05": {
+      "file": "api/test/workflow.test.js",
+      "kind": "API functional",
+      "title": "different category never matches"
+    },
+    "T06": {
+      "file": "api/test/workflow.test.js",
+      "kind": "API functional",
+      "title": "transient failure is retried and delivered on attempt 3 (recovered)"
+    },
+    "T07": {
+      "file": "api/test/workflow.test.js",
+      "kind": "API functional",
+      "title": "permanent failure is routed to manual queue after bounded attempts"
+    },
+    "T08": {
+      "file": "api/test/workflow.test.js",
+      "kind": "API functional",
+      "title": "verification then release closes both reports"
+    },
+    "T09": {
+      "file": "api/test/workflow.test.js",
+      "kind": "API functional",
+      "title": "students cannot verify matches (403); anonymous gets 401"
+    },
+    "T10": {
+      "file": "api/test/workflow.test.js",
+      "kind": "API functional",
+      "title": "aging job: reminder at 30 days, disposal review at 90 days, each only once"
+    },
+    "T11": {
+      "file": "api/test/workflow.test.js",
+      "kind": "API functional",
+      "title": "malformed JSON returns 400 with no stack trace"
+    },
+    "T12": {
+      "file": "api/test/workflow.test.js",
+      "kind": "API functional",
+      "title": "claimants cannot see found-item link in their matches"
+    },
+    "S01": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "no token -> 401 with WWW-Authenticate"
+    },
+    "S02": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "valid login returns a signed token and /me reflects the server-side role"
+    },
+    "S03": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "wrong password and unknown user give identical 401 (no user enumeration)"
+    },
+    "S04": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "account locks after 5 failures; correct password is then refused (429)"
+    },
+    "S05": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "altered token (role escalated, original signature) -> 401"
+    },
+    "S06": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "token signed with a different secret -> 401"
+    },
+    "S07": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "\"alg: none\" unsigned token -> 401"
+    },
+    "S08": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "expired token -> 401 (and logged as expired)"
+    },
+    "S09": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "token with wrong audience/issuer -> 401"
+    },
+    "S10": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "token for a user whose role no longer matches the server record -> 401"
+    },
+    "S11": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "legacy X-Role / X-User-Id headers grant nothing"
+    },
+    "S12": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "students get 403 on every staff endpoint"
+    },
+    "S13": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "object-level access: another student cannot read, list or match-view someone else\\"
+    },
+    "S14": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "logout revokes the token"
+    },
+    "S15": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "data minimisation: claimant match/notification views hide found id, verifier, notes and internals"
+    },
+    "S16": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "input validation: type confusion, control characters, bad dates -> 422"
+    },
+    "S17": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "oversized body -> 413; malformed identifiers -> 404"
+    },
+    "S18": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "hostile text is stored inert and returned as data (no execution, no crash)"
+    },
+    "S19": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "mass assignment: client-supplied id/status/reporterId are ignored"
+    },
+    "S20": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "logs never contain passwords, tokens or report text"
+    },
+    "S21": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "logger redacts sensitive keys and JWT-looking strings even if a caller slips"
+    },
+    "S22": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "security headers present and x-powered-by removed"
+    },
+    "S23": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "CORS: only configured origins are allowed"
+    },
+    "S24": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "global rate limit returns 429"
+    },
+    "S25": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "configuration: production refuses missing/weak secret and missing TLS"
+    },
+    "S26": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "production disables test hooks (simulated delivery, clock override)"
+    },
+    "S27": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "passwords are stored only as salted scrypt hashes"
+    },
+    "S28": {
+      "file": "api/test/security.test.js",
+      "kind": "API security",
+      "title": "HTTPS: API is reachable over TLS with the dev certificate and rejects plain HTTP"
+    },
+    "H01": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "description boundaries: 4 rejected, 5 accepted, 300 accepted, 301 rejected, whitespace-only rejected"
+    },
+    "H02": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "location boundaries: 1 rejected, 2 accepted, 100 accepted, 101 rejected"
+    },
+    "H03": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D1] a user in UTC+8 may report an item lost \"today\" even while UTC is still the previous day"
+    },
+    "H04": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D9] event date older than 730 days is rejected; exactly 730 days accepted"
+    },
+    "H05": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D12] impossible calendar dates (Feb 30, month 13, day 00) are rejected"
+    },
+    "H06": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D11] matching threshold: same category + same day with NO shared words is not a candidate"
+    },
+    "H07": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "list limit parameter: default, bounds and junk values never break the API"
+    },
+    "H08": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "content-type handling: charset parameter OK; wrong or missing body yields 422, never 500"
+    },
+    "H09": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "CORS preflight: allowed origin gets methods/headers; disallowed origin gets none"
+    },
+    "H10": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D5] Authorization scheme is case-insensitive; query-string tokens and sloppy headers are not accepted"
+    },
+    "H11": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D2] accents and case are ignored when matching (Cafe vs Café, nino vs niño)"
+    },
+    "H12": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D2] non-Latin descriptions are stored intact and different texts are NOT flagged as duplicates"
+    },
+    "H13": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "retry policy: exactly 3 attempts with 1000 ms then 2000 ms backoff, then manual queue"
+    },
+    "H14": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "identical concurrent submissions create exactly one report (duplicate control is race-free)"
+    },
+    "H15": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D4] double-clicking Re-send does not deliver twice"
+    },
+    "H16": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D3] a found item cannot be released to two different claimants"
+    },
+    "H17": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D6] persistence is atomic: a failed write leaves the previous data file intact"
+    },
+    "H18": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D6] persistence round-trip keeps ids monotonic; corrupt file falls back to last good backup or fails with a clear message"
+    },
+    "H19": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "error path: an unexpected failure returns a generic 500, leaks nothing, and the server stays up"
+    },
+    "H20": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "robustness sweep: 60 hostile requests never cause a 5xx and the server stays healthy"
+    },
+    "H21": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D7] login-failure tracking and token revocation lists are bounded (no memory growth under attack)"
+    },
+    "H22": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "[D8] separation of duties: staff cannot verify or release a match for their own report"
+    },
+    "H23": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "end-to-end across roles: lost -> found -> notify -> verify -> release -> closed, with audit trail"
+    },
+    "H24": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "aging job is idempotent and ignores closed/disposed reports"
+    },
+    "H25": {
+      "file": "api/test/hardening.test.js",
+      "kind": "API hardening / integration",
+      "title": "disposal review flow: aging flags -> custodian disposes -> report disposed; double-resolve 409; unknown id 404"
+    },
+    "O01": {
+      "file": "api/test/ops.test.js",
+      "kind": "API operability",
+      "title": "liveness and readiness: /health and /ready are public, minimal and report ready on a healthy server"
+    },
+    "O02": {
+      "file": "api/test/ops.test.js",
+      "kind": "API operability",
+      "title": "readiness turns 503 when a storage write really fails and recovers after the next successful write"
+    },
+    "O03": {
+      "file": "api/test/ops.test.js",
+      "kind": "API operability",
+      "title": "/api/metrics is staff-only and reports counts, latency percentiles, process and event-loop figures"
+    },
+    "O04": {
+      "file": "api/test/ops.test.js",
+      "kind": "API operability",
+      "title": "metrics expose no tokens, passwords or report text"
+    },
+    "O05": {
+      "file": "api/test/ops.test.js",
+      "kind": "API operability",
+      "title": "requests slower than SLOW_REQUEST_MS are logged as warnings with route and duration"
+    },
+    "O06": {
+      "file": "api/test/ops.test.js",
+      "kind": "API operability",
+      "title": "rate limiting: X-Forwarded-For is ignored unless TRUST_PROXY is set (cannot be spoofed); with a proxy, clients get separate buckets"
+    },
+    "P01": {
+      "file": "api/test/perf.test.js",
+      "kind": "API performance / lifecycle",
+      "title": "password verification uses asynchronous scrypt: the blocking call is never used on the login path"
+    },
+    "P02": {
+      "file": "api/test/perf.test.js",
+      "kind": "API performance / lifecycle",
+      "title": "group commit: 40 concurrent writes are all acknowledged, all on disk, and share a small number of file writes"
+    },
+    "P03": {
+      "file": "api/test/perf.test.js",
+      "kind": "API performance / lifecycle",
+      "title": "durability gate: when a 201 is returned the report is already in the data file"
+    },
+    "P04": {
+      "file": "api/test/perf.test.js",
+      "kind": "API performance / lifecycle",
+      "title": "a failed batch write fails every request in the batch (500), then a later write succeeds"
+    },
+    "P05": {
+      "file": "api/test/perf.test.js",
+      "kind": "API performance / lifecycle",
+      "title": "readiness reports shutting_down once shutdown has begun; liveness is unaffected"
+    },
+    "P06": {
+      "file": "api/test/perf.test.js",
+      "kind": "API performance / lifecycle",
+      "title": "graceful shutdown: in-flight request completes and is persisted, new connections refused, exit 0, idempotent"
+    },
+    "P07": {
+      "file": "api/test/perf.test.js",
+      "kind": "API performance / lifecycle",
+      "title": "speed guard: at 10,000 stored reports the best of 5 batches costs under 15 ms per create (typically about 3 ms; about 30-60 ms before caching)"
+    },
+    "P08": {
+      "file": "api/test/perf.test.js",
+      "kind": "API performance / lifecycle",
+      "title": "a stale temp file left by a crash mid-write is ignored and removed at startup"
+    },
+    "A01": {
+      "file": "api/test/acceptance.test.js",
+      "kind": "API acceptance (UAT fixes)",
+      "title": "[F3] one or two generic shared words are not enough for a candidate; brief lost descriptions still match"
+    },
+    "A02": {
+      "file": "api/test/acceptance.test.js",
+      "kind": "API acceptance (UAT fixes)",
+      "title": "[F3] scoring unit: overlap rule boundary (shorter description must be at least 50% covered)"
+    },
+    "A03": {
+      "file": "api/test/acceptance.test.js",
+      "kind": "API acceptance (UAT fixes)",
+      "title": "[F2] verifying or rejecting requires a note recording the proof checked / reason (audit trail)"
+    },
+    "A04": {
+      "file": "api/test/acceptance.test.js",
+      "kind": "API acceptance (UAT fixes)",
+      "title": "[F2] a refusal needs a reason too, and the match is then rejected with that reason on record"
+    },
+    "A05": {
+      "file": "api/test/acceptance.test.js",
+      "kind": "API acceptance (UAT fixes)",
+      "title": "[F1] staff matches carry both item summaries; claimants get only their own report; others get nothing"
+    },
+    "A06": {
+      "file": "api/test/acceptance.test.js",
+      "kind": "API acceptance (UAT fixes)",
+      "title": "[F4] notifications carry a creation time so they can be shown in plain language"
+    },
+    "C01": {
+      "file": "api/test/contract.test.js",
+      "kind": "API contract (OpenAPI)",
+      "title": "the OpenAPI document is valid OpenAPI 3 with resolvable references"
+    },
+    "C02": {
+      "file": "api/test/contract.test.js",
+      "kind": "API contract (OpenAPI)",
+      "title": "documented operations and real routes are exactly the same set, and the document is served at /api/openapi.json"
+    },
+    "C03": {
+      "file": "api/test/contract.test.js",
+      "kind": "API contract (OpenAPI)",
+      "title": "real responses match the documented schemas across the whole workflow (success and error paths)"
+    },
+    "C04": {
+      "file": "api/test/contract.test.js",
+      "kind": "API contract (OpenAPI)",
+      "title": "lockout and rate limiting (429) responses match the documented error schema"
+    },
+    "C05": {
+      "file": "api/test/contract.test.js",
+      "kind": "API contract (OpenAPI)",
+      "title": "every documented status code of every operation was exercised, except a short, justified allow-list"
+    },
+    "C06": {
+      "file": "api/test/contract.test.js",
+      "kind": "API contract (OpenAPI)",
+      "title": "documented security and roles match the server: every operation but the public ones requires a bearer token, and staff-only operations refuse a student with 403"
+    },
+    "D01": {
+      "file": "api/test/static.test.js",
+      "kind": "Static host (deployment)",
+      "title": "[F9] non-fingerprinted app files are always revalidated (no max-age), renderer files cache for a day"
+    },
+    "D02": {
+      "file": "api/test/static.test.js",
+      "kind": "Static host (deployment)",
+      "title": "an unchanged file is answered 304 via its ETag; a changed file is served again"
+    },
+    "D03": {
+      "file": "api/test/static.test.js",
+      "kind": "Static host (deployment)",
+      "title": "content is compressed when the browser accepts it (brotli preferred, then gzip) and is identical after decoding"
+    },
+    "D04": {
+      "file": "api/test/static.test.js",
+      "kind": "Static host (deployment)",
+      "title": "safety: security headers on every response, path traversal refused, only GET/HEAD, unknown paths fall back to the app"
+    },
+    "D05": {
+      "file": "api/test/static.test.js",
+      "kind": "Static host (deployment)",
+      "title": "[Week 18] compressing a large binary never blocks other requests and returns correct bytes (max-quality sync brotli took 35 s for the 7 MB renderer)"
+    },
+    "D06": {
+      "file": "api/test/static.test.js",
+      "kind": "Static host (deployment)",
+      "title": "[Week 18] warm() pre-compresses the first-visit files so the first real request is served at once"
+    },
+    "W01": {
+      "file": "app/test/widget_test.dart",
+      "kind": "Flutter widget",
+      "title": "sign-in validates empty user id and password"
+    },
+    "W02": {
+      "file": "app/test/widget_test.dart",
+      "kind": "Flutter widget",
+      "title": "password field is obscured by default"
+    },
+    "W03": {
+      "file": "app/test/widget_test.dart",
+      "kind": "Flutter widget",
+      "title": "report form shows validation errors before calling API"
+    },
+    "W04": {
+      "file": "app/test/widget_test.dart",
+      "kind": "Flutter widget",
+      "title": "network failure shows error state with retry"
+    },
+    "W05": {
+      "file": "app/test/widget_test.dart",
+      "kind": "Flutter widget",
+      "title": "expired session (401) offers sign in again, no retry"
+    },
+    "W06": {
+      "file": "app/test/widget_test.dart",
+      "kind": "Flutter widget",
+      "title": "authorization error hides retry"
+    },
+    "W07": {
+      "file": "app/test/widget_test.dart",
+      "kind": "Flutter widget",
+      "title": "empty list shows empty state"
+    },
+    "U07": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "sign-in failure shows the server message and stays on the sign-in screen"
+    },
+    "U08": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "account lockout (429) shows a wait message, not a raw error"
+    },
+    "U09": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "successful sign-in opens the home shell; student has no Manual queue destination"
+    },
+    "U10": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "reports list shows a loading indicator first, then the data"
+    },
+    "U11": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "server error (500) shows \"Server error\" and Try again recovers"
+    },
+    "U12": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "[D15] a non-JSON gateway error page (502 HTML) is shown as a server error, not a crash"
+    },
+    "U13": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "network failure while loading shows Network problem with retry"
+    },
+    "U14": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "students never see Verify/Reject/Release controls"
+    },
+    "U15": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "staff see Verify/Reject on a candidate and Release on a verified match"
+    },
+    "U16": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "verifying a match (with the required note) posts to the right endpoint and refreshes the list"
+    },
+    "U17": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "conflict of interest (403) on Verify is shown to the user and the list is unchanged"
+    },
+    "U18": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "manual queue returns 403 for a student: \"Not authorized\" and no retry button"
+    },
+    "U19": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "manual queue lists a failed notification with a Re-send action"
+    },
+    "U20": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "report form shows server-side field errors under the fields (422)"
+    },
+    "U21": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "duplicate report (409) is explained to the user"
+    },
+    "U22": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "successful submit shows the match count and clears the form"
+    },
+    "U23": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "submit button is disabled with a progress indicator while the request is in flight"
+    },
+    "U24": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "network failure on submit shows an error message and re-enables the button"
+    },
+    "U25": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "responsive layout (wide, 1000 px): navigation rail; staff get the Manual queue tab"
+    },
+    "U26": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "responsive layout (phone, 400 px): bottom bar, no overflow on the report form"
+    },
+    "U27": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "[F1] staff see both items (description, location, reporter) on the match card"
+    },
+    "U28": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "[F2] Verify opens a dialog showing both items; an empty note is refused and nothing is posted; Cancel posts nothing"
+    },
+    "U29": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "[F2] Verify with a note posts ownershipConfirmed:true and the note, then refreshes"
+    },
+    "U30": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "[F2] Reject needs a reason and posts ownershipConfirmed:false"
+    },
+    "U31": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "[F2] Release asks for confirmation naming the claimant; Cancel posts nothing; Release posts"
+    },
+    "U32": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "[F1][F4] a student sees plain-language status and only their own item, no staff controls and no found item"
+    },
+    "U33": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "[F4] notifications read as plain language with a time; staff additionally see references and delivery detail"
+    },
+    "U34": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "[F5] the delivery simulator is hidden in normal builds and never sent to the server"
+    },
+    "U35": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "[F7] confirmation messages stay visible long enough to read and can be dismissed"
+    },
+    "U36": {
+      "file": "app/test/ui_state_test.dart",
+      "kind": "Flutter UI state",
+      "title": "[F8] a decision is still sent and reported when the layout changes (rotation / window resize) while the dialog is open"
+    }
+  },
+  "problems": []
+}

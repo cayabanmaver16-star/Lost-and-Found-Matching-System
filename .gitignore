@@ -1,0 +1,22 @@
+# dependencies and build output
+node_modules/
+app/build/
+app/.dart_tool/
+app/.flutter-plugins*
+# secrets and local configuration
+.env
+.env.*
+!.env.example
+api/certs/
+# runtime data
+api/data/
+*.bak
+*.tmp
+# local work areas for measurements and acceptance runs
+perf/work/
+uat/work/
+# editor and OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

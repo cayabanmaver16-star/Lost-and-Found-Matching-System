@@ -1,0 +1,87 @@
+{
+  "ranAt": "2026-11-07T19:25:17.487Z",
+  "quick": false,
+  "node": "v20.10.0",
+  "gates": [
+    {
+      "ok": true,
+      "detail": "97 of 97 pass",
+      "name": "API tests (functional, security, hardening, operability, performance, acceptance, contract, static host)",
+      "seconds": 15
+    },
+    {
+      "ok": true,
+      "detail": "no issues",
+      "name": "Flutter analyzer",
+      "seconds": 12.4
+    },
+    {
+      "ok": true,
+      "detail": "37 of 37 pass",
+      "name": "Flutter tests",
+      "seconds": 10.9
+    },
+    {
+      "ok": true,
+      "detail": "32 requirements, 134 tests, no gaps",
+      "name": "Traceability: every test maps to a requirement, every requirement has a test",
+      "seconds": 0.1
+    },
+    {
+      "ok": true,
+      "detail": "exports identical to the spec module",
+      "name": "OpenAPI export is current (regenerating changes nothing)",
+      "seconds": 0.1
+    },
+    {
+      "ok": true,
+      "detail": "8 of 8 caught; original spec restored and passing",
+      "name": "Contract tests catch deliberate OpenAPI mistakes (mutation check)",
+      "seconds": 28.1
+    },
+    {
+      "ok": true,
+      "detail": "14 of 14 scenarios, 41 of 41 steps",
+      "name": "Scripted user acceptance scenarios",
+      "seconds": 5.7
+    },
+    {
+      "ok": true,
+      "detail": "39 of 39 checks",
+      "name": "Narrated end-to-end run (the prepared fallback) passes every check",
+      "seconds": 5.6
+    },
+    {
+      "ok": true,
+      "detail": "37 claims, 97 artifacts, 82 test ids",
+      "name": "Evidence map: every file, test id and decision record it names exists",
+      "seconds": 0.1
+    },
+    {
+      "ok": true,
+      "detail": "0 known vulnerabilities",
+      "name": "Dependency audit (runtime dependencies)",
+      "seconds": 2.7
+    },
+    {
+      "ok": true,
+      "detail": "121 files scanned; only the documented test-only accounts file contains passwords; .env.example has no secret",
+      "name": "No secrets or private keys in the deliverable files",
+      "seconds": 0.1
+    },
+    {
+      "ok": true,
+      "detail": "26 required files present",
+      "name": "Minimum final deliverables and the six weekly reports exist",
+      "seconds": 0
+    }
+  ],
+  "meta": {
+    "apiTests": 97,
+    "flutterTests": 37,
+    "requirements": 32,
+    "traceTests": 134
+  },
+  "passed": 12,
+  "failed": 0
+}

@@ -1,0 +1,13 @@
+ordinary           vus= 10 rps=    12 p50=   5.5 p95=   15.9 p99=   24.7 max=   53.3 err=0% cpu(max)=28.7% rss=65.7MB loopP99=25.8ms
+peak               vus= 50 rps= 169.9 p50=  12.9 p95=  108.3 p99=  150.5 max=  230.7 err=0% cpu(max)=124% rss=136.2MB loopP99=35.5ms
+login burst        c=40 x3: logins/s=59.1 login p50=383.3 p95=655.9 max=694.6 | /health during burst p50=4.2 p95=37.1 max=82.7 errors=0
+growth 0           vus=  8 rps=  48.7 p50=   4.8 p95=   13.4 p99=   19.4 max=   29.2 err=0% cpu(max)=38.3% rss=68.7MB loopP99=25.6ms | createLost p95=16.1 createFound p95=16.8 listReports p95=6.9 db=0.1MB
+growth 2000        vus=  8 rps=  42.6 p50=   5.6 p95=   27.1 p99=   40.5 max=   50.3 err=0% cpu(max)=55.4% rss=103.2MB loopP99=30.5ms | createLost p95=39 createFound p95=33.6 listReports p95=9.7 db=0.9MB
+growth 10000       vus=  8 rps=    44 p50=   7.6 p95=   79.9 p99=   97.1 max=  162.8 err=0% cpu(max)=77% rss=122MB loopP99=41.6ms | createLost p95=93.7 createFound p95=86.7 listReports p95=27.8 db=4.2MB
+growth 25000       vus=  8 rps=  34.8 p50=  34.4 p95=  235.4 p99=  289.4 max=  385.9 err=0% cpu(max)=102.5% rss=252.6MB loopP99=81.5ms | createLost p95=257.5 createFound p95=278.9 listReports p95=64.5 db=9.9MB
+stress 25vu        vus= 25 rps= 184.8 p50=  10.1 p95=   58.5 p99=   86.6 max=  118.1 err=0% cpu(max)=121.1% rss=104.4MB loopP99=28.9ms
+stress 50vu        vus= 50 rps= 259.7 p50=  31.1 p95=  287.4 p99=  352.3 max=  406.8 err=0% cpu(max)=115% rss=162.1MB loopP99=80.7ms
+stress 100vu       vus=100 rps= 229.7 p50= 144.7 p95= 1005.6 p99= 1136.2 max=   1283 err=0% cpu(max)=110.3% rss=183.5MB loopP99=245.5ms
+stress 200vu       vus=200 rps= 196.2 p50= 443.7 p95= 2711.5 p99= 2800.4 max= 2983.1 err=0% cpu(max)=111.4% rss=245.9MB loopP99=572.5ms
+stress 400vu       vus=400 rps= 172.7 p50=1292.4 p95= 6887.7 p99= 6910.9 max= 6936.2 err=0% cpu(max)=111.2% rss=312.8MB loopP99=687.3ms
+saved C:\Project 18\lostfound\docs\w16\results-optimised-dev-http.json

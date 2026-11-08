@@ -1,0 +1,138 @@
+[
+  {
+    "ts": "2026-11-07T16:00:43.209Z",
+    "level": "info",
+    "event": "server.started",
+    "port": "3055"
+  },
+  {
+    "ts": "2026-11-07T16:00:47.782Z",
+    "level": "info",
+    "event": "report.created",
+    "id": "R-0001",
+    "type": "lost",
+    "category": "wallet"
+  },
+  {
+    "ts": "2026-11-07T16:00:47.822Z",
+    "level": "warn",
+    "event": "report.duplicate_rejected",
+    "existingId": "R-0001",
+    "reporterId": "stu1"
+  },
+  {
+    "ts": "2026-11-07T16:00:47.832Z",
+    "level": "info",
+    "event": "report.created",
+    "id": "R-0003",
+    "type": "found",
+    "category": "wallet"
+  },
+  {
+    "ts": "2026-11-07T16:00:47.833Z",
+    "level": "info",
+    "event": "match.candidate_created",
+    "id": "M-0004",
+    "lostId": "R-0001",
+    "foundId": "R-0003",
+    "score": 86
+  },
+  {
+    "ts": "2026-11-07T16:00:47.835Z",
+    "level": "warn",
+    "event": "notification.attempt_failed",
+    "id": "N-0005",
+    "attempt": 1,
+    "error": "Gateway timeout",
+    "willRetry": true
+  },
+  {
+    "ts": "2026-11-07T16:00:48.843Z",
+    "level": "warn",
+    "event": "notification.attempt_failed",
+    "id": "N-0005",
+    "attempt": 2,
+    "error": "Gateway timeout",
+    "willRetry": true
+  },
+  {
+    "ts": "2026-11-07T16:00:50.855Z",
+    "level": "info",
+    "event": "notification.delivered",
+    "id": "N-0005",
+    "matchId": "M-0004",
+    "attempts": 3
+  },
+  {
+    "ts": "2026-11-07T16:00:50.867Z",
+    "level": "info",
+    "event": "report.created",
+    "id": "R-0006",
+    "type": "lost",
+    "category": "keys"
+  },
+  {
+    "ts": "2026-11-07T16:00:50.874Z",
+    "level": "info",
+    "event": "report.created",
+    "id": "R-0007",
+    "type": "found",
+    "category": "keys"
+  },
+  {
+    "ts": "2026-11-07T16:00:50.874Z",
+    "level": "info",
+    "event": "match.candidate_created",
+    "id": "M-0008",
+    "lostId": "R-0006",
+    "foundId": "R-0007",
+    "score": 85
+  },
+  {
+    "ts": "2026-11-07T16:00:50.875Z",
+    "level": "warn",
+    "event": "notification.attempt_failed",
+    "id": "N-0009",
+    "attempt": 1,
+    "error": "Recipient mailbox unavailable",
+    "willRetry": false
+  },
+  {
+    "ts": "2026-11-07T16:00:50.875Z",
+    "level": "error",
+    "event": "notification.routed_to_manual",
+    "id": "N-0009",
+    "matchId": "M-0008",
+    "attempts": 1
+  },
+  {
+    "ts": "2026-11-07T16:00:50.893Z",
+    "level": "info",
+    "event": "notification.delivered",
+    "id": "N-0009",
+    "matchId": "M-0008",
+    "attempts": 1
+  },
+  {
+    "ts": "2026-11-07T16:00:50.910Z",
+    "level": "info",
+    "event": "match.verified",
+    "id": "M-0004",
+    "by": "cust1"
+  },
+  {
+    "ts": "2026-11-07T16:00:50.922Z",
+    "level": "info",
+    "event": "match.released",
+    "id": "M-0004",
+    "lostId": "R-0001",
+    "foundId": "R-0003"
+  },
+  {
+    "ts": "2026-11-07T16:00:50.936Z",
+    "level": "info",
+    "event": "aging.reminder_sent",
+    "id": "R-0007",
+    "ageDays": 40
+  }
+]

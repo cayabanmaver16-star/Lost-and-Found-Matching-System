@@ -1,0 +1,413 @@
+{
+  "label": "before-fixes",
+  "ranAt": "2026-11-07T17:29:03.150Z",
+  "scenarios": [
+    {
+      "id": "UAT-01",
+      "title": "Sign-in, wrong password, lockout and sign-out",
+      "persona": "Any user",
+      "criteria": [
+        "Valid users reach their role; errors do not reveal whether the user exists; repeated failures lock the account; sign-out ends the session"
+      ],
+      "steps": [
+        {
+          "name": "stu1 identifies as student",
+          "expected": "200, role student",
+          "actual": "200 student",
+          "pass": true
+        },
+        {
+          "name": "emp1 identifies as employee",
+          "expected": "200, role employee",
+          "actual": "200 employee",
+          "pass": true
+        },
+        {
+          "name": "sec1 identifies as security",
+          "expected": "200, role security",
+          "actual": "200 security",
+          "pass": true
+        },
+        {
+          "name": "cust1 identifies as custodian",
+          "expected": "200, role custodian",
+          "actual": "200 custodian",
+          "pass": true
+        },
+        {
+          "name": "wrong password and unknown user look identical",
+          "expected": "401 with same message",
+          "actual": "Invalid user ID or password | Invalid user ID or password",
+          "pass": true
+        },
+        {
+          "name": "account locks after 5 failures, even with the right password",
+          "expected": "429 ACCOUNT_LOCKED",
+          "actual": "429 ACCOUNT_LOCKED",
+          "pass": true
+        },
+        {
+          "name": "token is refused after sign-out",
+          "expected": "401",
+          "actual": "401",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UAT-02",
+      "title": "Student reports a lost item (validation and success)",
+      "persona": "Student (stu1)",
+      "criteria": [
+        "Invalid input is explained field by field; a valid report is accepted and visible only to its owner and staff"
+      ],
+      "steps": [
+        {
+          "name": "too-short description and empty location are rejected with field messages",
+          "expected": "422 with description and location details",
+          "actual": "422 description,location",
+          "pass": true
+        },
+        {
+          "name": "valid lost report accepted",
+          "expected": "201 status open",
+          "actual": "201 R-0001",
+          "pass": true
+        },
+        {
+          "name": "owner sees it, another student does not",
+          "expected": "stu1: 1 report, stu2: 0",
+          "actual": "stu1 1, stu2 0",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UAT-03",
+      "title": "Security officer reports a matching found item",
+      "persona": "Security officer (sec1)",
+      "criteria": [
+        "A found item that resembles an open lost item creates exactly one candidate match and notifies the owner"
+      ],
+      "steps": [
+        {
+          "name": "found report accepted and one candidate created",
+          "expected": "201, 1 match, score >= 50",
+          "actual": "201 matches=1 score=81",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UAT-04",
+      "title": "Student sees the match and notification",
+      "persona": "Student (stu1)",
+      "criteria": [
+        "The owner is told a candidate exists without seeing the finder or the found item's identifier"
+      ],
+      "steps": [
+        {
+          "name": "student sees the candidate match without the found-report id",
+          "expected": "1 match, no foundId",
+          "actual": "{\"id\":\"M-0003\",\"lostId\":\"R-0001\",\"score\":81,\"status\":\"candidate\",\"createdAt\":\"2026-11-07T17:28:59.828Z\",\"lost\":{\"id\":\"R-0001\",\"category\":\"wallet\",\"description\":\"black leather wallet with student card and red sticker\",\"location\":\"library second floor\",\"eventDate\":\"2026-11-06\",\"status\":\"open\"}}",
+          "pass": true
+        },
+        {
+          "name": "notification delivered",
+          "expected": "delivered on attempt 1",
+          "actual": "{\"s\":\"delivered\",\"a\":1}",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UAT-05",
+      "title": "Custodian verifies ownership and releases the item",
+      "persona": "Custodian (cust1)",
+      "criteria": [
+        "Release is impossible before verification; after release both reports are closed and the owner sees the outcome; every step is audited"
+      ],
+      "steps": [
+        {
+          "name": "release before verification is blocked",
+          "expected": "409",
+          "actual": "409",
+          "pass": true
+        },
+        {
+          "name": "ownership verified",
+          "expected": "200 verified",
+          "actual": "200 verified",
+          "pass": true
+        },
+        {
+          "name": "item released to the owner",
+          "expected": "200 released to stu1",
+          "actual": "200 stu1",
+          "pass": true
+        },
+        {
+          "name": "owner sees the match as released",
+          "expected": "released",
+          "actual": "released",
+          "pass": true
+        },
+        {
+          "name": "audit trail has created, verified, released",
+          "expected": "all three actions present",
+          "actual": "report.created,report.created,match.verified,match.released",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UAT-06",
+      "title": "Duplicate and different reports",
+      "persona": "Student (stu2)",
+      "criteria": [
+        "Re-submitting the same report is refused with a pointer to the original; a different item is accepted"
+      ],
+      "steps": [
+        {
+          "name": "same report again is refused",
+          "expected": "409 DUPLICATE_REPORT naming the original",
+          "actual": "409 DUPLICATE_REPORT R-0005",
+          "pass": true
+        },
+        {
+          "name": "a different item is accepted",
+          "expected": "201",
+          "actual": "201",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UAT-07",
+      "title": "People cannot do or see what their role does not allow",
+      "persona": "Student, anonymous",
+      "criteria": [
+        "Staff functions and other people's data are not available to students; missing or forged identity is refused"
+      ],
+      "steps": [
+        {
+          "name": "student cannot verify",
+          "expected": "403",
+          "actual": "403",
+          "pass": true
+        },
+        {
+          "name": "student cannot open the manual queue",
+          "expected": "403",
+          "actual": "403",
+          "pass": true
+        },
+        {
+          "name": "no token",
+          "expected": "401",
+          "actual": "401",
+          "pass": true
+        },
+        {
+          "name": "student cannot open another student's report",
+          "expected": "404 (existence not revealed)",
+          "actual": "404",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UAT-08",
+      "title": "A notification that cannot be delivered reaches a human",
+      "persona": "Security officer, custodian",
+      "criteria": [
+        "A permanent delivery failure creates a manual-queue item; the custodian can re-send and the item resolves"
+      ],
+      "steps": [
+        {
+          "name": "failure is routed to the manual queue",
+          "expected": "open notification_failure with a reason",
+          "actual": "{\"id\":\"MQ-0012\",\"reason\":\"Recipient mailbox unavailable\"}",
+          "pass": true
+        },
+        {
+          "name": "re-send delivers and resolves the item",
+          "expected": "delivered + resolved",
+          "actual": "200 delivered",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UAT-09",
+      "title": "A temporary delivery problem fixes itself",
+      "persona": "Security officer",
+      "criteria": [
+        "A transient failure is retried automatically and no staff action is needed"
+      ],
+      "steps": [
+        {
+          "name": "delivered after retries without staff action",
+          "expected": "delivered on attempt 3",
+          "actual": "{\"s\":\"delivered\",\"a\":3}",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UAT-10",
+      "title": "Staff cannot decide a match for their own lost item",
+      "persona": "Security officer (sec1) and custodian",
+      "criteria": [
+        "A staff member who lost something cannot verify or release its match; another staff member can"
+      ],
+      "steps": [
+        {
+          "name": "own match cannot be verified",
+          "expected": "403 CONFLICT_OF_INTEREST",
+          "actual": "403 CONFLICT_OF_INTEREST",
+          "pass": true
+        },
+        {
+          "name": "another staff member can",
+          "expected": "200",
+          "actual": "200",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UAT-11",
+      "title": "Wrong claimant rejected; one item, two claimants",
+      "persona": "Custodian, two students",
+      "criteria": [
+        "Rejecting a match leaves the reports open; an item can only be released to one person"
+      ],
+      "steps": [
+        {
+          "name": "both claimants become candidates",
+          "expected": "2 matches",
+          "actual": "2",
+          "pass": true
+        },
+        {
+          "name": "first claimant rejected",
+          "expected": "rejected",
+          "actual": "rejected",
+          "pass": true
+        },
+        {
+          "name": "second claimant verified and released",
+          "expected": "200 released",
+          "actual": "200/200",
+          "pass": true
+        },
+        {
+          "name": "rejected claimant cannot be verified afterwards",
+          "expected": "409",
+          "actual": "409",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UAT-12",
+      "title": "Unrelated items are not matched; brief descriptions still are",
+      "persona": "Security officer",
+      "criteria": [
+        "Different categories or generic shared words (a colour, \"tag\") do not create a candidate; a short lost description still matches a detailed found one"
+      ],
+      "steps": [
+        {
+          "name": "different category never matches the books report",
+          "expected": "no match references the books report",
+          "actual": "R-0007",
+          "pass": true
+        },
+        {
+          "name": "same category, nothing in common: no match",
+          "expected": "0 matches",
+          "actual": "0",
+          "pass": true
+        },
+        {
+          "name": "found keys sharing only generic words (\"blue\", \"tag\") are NOT a candidate for the silver house keys",
+          "expected": "no match references that report",
+          "actual": "matched lost reports: R-0005 (score 66), R-0007 (score 80)",
+          "pass": false
+        },
+        {
+          "name": "a brief lost description still matches a detailed found one",
+          "expected": "1 match",
+          "actual": "1",
+          "pass": true
+        }
+      ],
+      "pass": false
+    },
+    {
+      "id": "UAT-13",
+      "title": "Unclaimed items: reminder then disposal review",
+      "persona": "Custodian",
+      "criteria": [
+        "At 30 days one reminder is raised; at 90 days a disposal review appears; the custodian can dispose; nothing repeats"
+      ],
+      "steps": [
+        {
+          "name": "30-day reminder raised once",
+          "expected": "1 then 0",
+          "actual": "8 then 0",
+          "pass": true
+        },
+        {
+          "name": "90-day disposal review appears",
+          "expected": "open disposal_review",
+          "actual": "8",
+          "pass": true
+        },
+        {
+          "name": "custodian disposes",
+          "expected": "resolved",
+          "actual": "200 resolved",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UAT-14",
+      "title": "Forged or expired sign-in is refused",
+      "persona": "Any",
+      "criteria": [
+        "A tampered token is rejected and never grants a higher role"
+      ],
+      "steps": [
+        {
+          "name": "token with role changed to custodian",
+          "expected": "401",
+          "actual": "401",
+          "pass": true
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "summary": {
+    "scenarios": 14,
+    "passed": 13,
+    "failed": 1,
+    "steps": 41,
+    "stepsFailed": 1
+  }
+}

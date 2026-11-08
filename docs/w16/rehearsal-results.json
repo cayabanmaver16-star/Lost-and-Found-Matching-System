@@ -1,0 +1,101 @@
+{
+  "startedAt": "2026-11-07T17:05:49.864Z",
+  "rehearsals": {
+    "crashRecovery": {
+      "acknowledgedWrites": 603,
+      "fileParsedAfterKill": true,
+      "acknowledgedMissing": 0,
+      "duplicateIds": 0,
+      "leftoverTempFile": true,
+      "restartToReadyMs": 917,
+      "postCrashWriteStatus": 201,
+      "postCrashIdUnique": true,
+      "totalReportsBefore": 2000,
+      "totalReportsAfterRestart": 2604
+    },
+    "corruption": {
+      "reportsBeforeCorruption": 520,
+      "recoveredFromBackup": true,
+      "reportsServedAfterRecovery": 500,
+      "restartToReadyMs": 1009,
+      "reportsLostApprox": 20,
+      "bothFilesCorruptRefusesToStart": true,
+      "refusalMessage": "Error: Data file db.json is corrupt (Unexpected token 'g', \"garbage\" is not valid JSON) and no valid backup exists. Restore it from a backup before starting.\r"
+    },
+    "rollback": {
+      "codeRegression": {
+        "rolledBack": true,
+        "downtimeMs": 2009,
+        "timeline": [
+          {
+            "tMs": 10,
+            "event": "stop v1"
+          },
+          {
+            "tMs": 918,
+            "event": "start v2-bug"
+          },
+          {
+            "tMs": 1011,
+            "event": "gate FAILED for v2-bug: smoke test failed: GET /api/reports -> 500"
+          },
+          {
+            "tMs": 1918,
+            "event": "rollback: restarted v1"
+          },
+          {
+            "tMs": 2009,
+            "event": "rollback gate passed in 90 ms"
+          }
+        ],
+        "reason": "smoke test failed: GET /api/reports -> 500"
+      },
+      "configError": {
+        "rolledBack": true,
+        "downtimeMs": 1678,
+        "timeline": [
+          {
+            "tMs": 11,
+            "event": "stop v1"
+          },
+          {
+            "tMs": 672,
+            "event": "gate FAILED for v2-config: server exited early (code 1)"
+          },
+          {
+            "tMs": 1583,
+            "event": "rollback: restarted v1"
+          },
+          {
+            "tMs": 1678,
+            "event": "rollback gate passed in 94 ms"
+          }
+        ],
+        "reason": "server exited early (code 1)"
+      },
+      "goodRelease": {
+        "deployed": true,
+        "downtimeMs": 1015,
+        "timeline": [
+          {
+            "tMs": 9,
+            "event": "stop v1"
+          },
+          {
+            "tMs": 921,
+            "event": "start v2-good"
+          },
+          {
+            "tMs": 1015,
+            "event": "gate passed in 94 ms"
+          }
+        ]
+      },
+      "dataIntact": {
+        "reportsBefore": 1000,
+        "reportsAfter": 1000
+      }
+    }
+  },
+  "finishedAt": "2026-11-07T17:06:05.808Z"
+}

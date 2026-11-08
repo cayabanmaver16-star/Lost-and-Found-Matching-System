@@ -1,0 +1,10 @@
+{
+  "_note": "TEST-ONLY fictional accounts for local development and automated tests. Never reuse these passwords anywhere. Production users must come from the institution's identity system.",
+  "users": [
+    { "id": "stu1",  "role": "student",   "password": "Demo-Stu1-Pass#2026" },
+    { "id": "stu2",  "role": "student",   "password": "Demo-Stu2-Pass#2026" },
+    { "id": "emp1",  "role": "employee",  "password": "Demo-Emp1-Pass#2026" },
+    { "id": "sec1",  "role": "security",  "password": "Demo-Sec1-Pass#2026" },
+    { "id": "cust1", "role": "custodian", "password": "Demo-Cust1-Pass#2026" }
+  ]
+}

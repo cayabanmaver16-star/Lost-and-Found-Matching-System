@@ -1,0 +1,49 @@
+Resolving dependencies...
+Downloading packages...
+  cupertino_icons 1.0.9 (2.0.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.4 available)
+Got dependencies!
+5 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading C:/Project 18/lostfound/app/test/ui_state_test.dart
+00:00 +0: U36 [F8] a decision is still sent and reported when the layout changes (rotation / window resize) while the dialog is open
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: ['/api/matches/M-0002/verify']
+  Actual: []
+   Which: at location [0] is [] which shorter than expected
+the decision must not be silently dropped
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///C:/Project%2018/lostfound/app/test/ui_state_test.dart:427:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///C:/Project%2018/lostfound/app/test/ui_state_test.dart line 427
+The test description was:
+  U36 [F8] a decision is still sent and reported when the layout changes (rotation / window resize)
+  while the dialog is open
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -1: U36 [F8] a decision is still sent and reported when the layout changes (rotation / window resize) while the dialog is open [E]
+  Test failed. See exception logs above.
+  The test description was: U36 [F8] a decision is still sent and reported when the layout changes (rotation / window resize) while the dialog is open
+  
+
+Warning: At least one test in this suite creates an HttpClient. When running a test suite that uses
+TestWidgetsFlutterBinding, all HTTP requests will return status code 400, and no network request
+will actually be made. Any test expecting a real network connection and status code will fail.
+To test code that needs an HttpClient, provide your own HttpClient implementation to the code under
+test, so that your test can consistently provide a testable response to the code under test.
+00:03 +0 -1: Some tests failed.
+
+Failing tests:
+  C:/Project 18/lostfound/app/test/ui_state_test.dart: U36 [F8] a decision is still sent and reported when the layout changes (rotation / window resize) while the dialog is open

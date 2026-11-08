@@ -1,0 +1,496 @@
+{
+  "requirements": {
+    "FR-01": "Users can submit lost and found reports; the server validates every field (type, category, text length, real calendar date within the allowed window).",
+    "FR-02": "Duplicate reports by the same reporter are rejected, without falsely rejecting different items.",
+    "FR-03": "Lost and found reports are matched automatically into candidate matches using category, description, location and date.",
+    "FR-04": "Candidate-match notifications are delivered with bounded retries, backoff and recovery; permanent failures are routed to staff.",
+    "FR-05": "Ownership is verified manually and release follows a strict state machine that cannot hand an item over twice or skip verification.",
+    "FR-06": "Unclaimed found items trigger one aging reminder (30 days) and one disposal review (90 days).",
+    "FR-07": "Staff handle failed notifications and disposal reviews through a manual queue (re-send, resolve, dispose).",
+    "FR-08": "Every state change is audited and system events are logged in structured form.",
+    "SR-01": "Users authenticate with credentials; sessions use signed, expiring, revocable tokens; brute force is limited.",
+    "SR-02": "Access is authorised on the server by role and by object ownership.",
+    "SR-03": "Data is protected in transit (HTTPS) and responses carry security headers; CORS is restricted.",
+    "SR-04": "Secrets and environment settings are protected; production fails fast on unsafe configuration.",
+    "SR-05": "All input is validated and malformed or hostile input is rejected safely.",
+    "SR-06": "Logs never contain credentials, tokens or report text.",
+    "SR-07": "API responses expose only the data each role needs.",
+    "NF-01": "The system is reliable: errors are generic, state stays consistent, writes are atomic and concurrency is safe.",
+    "NF-02": "The API interoperates with standard clients: content types, CORS preflight, authorization scheme case, Unicode text.",
+    "NF-03": "Resource use is bounded: rate limits, body size, paging, in-memory tracking tables.",
+    "UI-01": "Sign-in and session handling in the Flutter app, including failure, lockout and expiry states.",
+    "UI-02": "Report submission shows validation, loading, success, duplicate and error states.",
+    "UI-03": "Match review and manual queue controls are role-appropriate and update the list after each action.",
+    "UI-04": "Every list or screen has loading, empty, network, authorization and server-error states with correct retry behaviour.",
+    "UI-05": "The layout adapts between phone and desktop widths.",
+    "NF-04": "Operability: liveness and readiness probes, staff-only metrics (latency percentiles, errors, process and event-loop health) and slow-request logging allow problems to be detected.",
+    "NF-05": "Performance and capacity: stated response-time and error targets are met under ordinary and peak load, and the cost of a request does not grow with the amount of stored data.",
+    "NF-06": "Recoverability: acknowledged writes survive crashes, shutdown is graceful, corrupt storage recovers from backup, and a bad release can be rolled back.",
+    "UI-06": "Staff can see both items side by side when deciding a match and must record the proof checked or the reason for refusing; irreversible steps ask for confirmation.",
+    "UI-07": "Users see plain-language messages (status, notifications, confirmations) instead of internal ids and codes, and messages stay visible long enough to read.",
+    "UI-08": "Production builds expose no developer or demonstration tools.",
+    "FR-09": "Matching precision: generic shared words do not create candidates, while brief lost descriptions still match detailed found items.",
+    "DOC-01": "The API is documented in OpenAPI 3 and the document is exactly accurate: same routes, response codes, schemas, security and roles as the running server.",
+    "DEP-01": "The static host serves the Flutter app compressed, always revalidates non-fingerprinted files (no stale app code after a deploy) and sends baseline security headers."
+  },
+  "tests": {
+    "T01": [
+      "FR-01"
+    ],
+    "T02": [
+      "FR-01",
+      "SR-05"
+    ],
+    "T03": [
+      "FR-02"
+    ],
+    "T04": [
+      "FR-03",
+      "FR-04"
+    ],
+    "T05": [
+      "FR-03"
+    ],
+    "T06": [
+      "FR-04"
+    ],
+    "T07": [
+      "FR-04",
+      "FR-07"
+    ],
+    "T08": [
+      "FR-05"
+    ],
+    "T09": [
+      "SR-02"
+    ],
+    "T10": [
+      "FR-06"
+    ],
+    "T11": [
+      "NF-01",
+      "SR-05"
+    ],
+    "T12": [
+      "SR-07"
+    ],
+    "S01": [
+      "SR-01"
+    ],
+    "S02": [
+      "SR-01"
+    ],
+    "S03": [
+      "SR-01"
+    ],
+    "S04": [
+      "SR-01",
+      "NF-03"
+    ],
+    "S05": [
+      "SR-01"
+    ],
+    "S06": [
+      "SR-01"
+    ],
+    "S07": [
+      "SR-01"
+    ],
+    "S08": [
+      "SR-01",
+      "SR-06"
+    ],
+    "S09": [
+      "SR-01"
+    ],
+    "S10": [
+      "SR-01",
+      "SR-02"
+    ],
+    "S11": [
+      "SR-02"
+    ],
+    "S12": [
+      "SR-02"
+    ],
+    "S13": [
+      "SR-02",
+      "SR-07"
+    ],
+    "S14": [
+      "SR-01"
+    ],
+    "S15": [
+      "SR-07"
+    ],
+    "S16": [
+      "SR-05"
+    ],
+    "S17": [
+      "SR-05",
+      "NF-03"
+    ],
+    "S18": [
+      "SR-05"
+    ],
+    "S19": [
+      "SR-05"
+    ],
+    "S20": [
+      "SR-06"
+    ],
+    "S21": [
+      "SR-06"
+    ],
+    "S22": [
+      "SR-03"
+    ],
+    "S23": [
+      "SR-03",
+      "NF-02"
+    ],
+    "S24": [
+      "NF-03"
+    ],
+    "S25": [
+      "SR-04"
+    ],
+    "S26": [
+      "SR-04"
+    ],
+    "S27": [
+      "SR-01"
+    ],
+    "S28": [
+      "SR-03"
+    ],
+    "H01": [
+      "FR-01"
+    ],
+    "H02": [
+      "FR-01"
+    ],
+    "H03": [
+      "FR-01"
+    ],
+    "H04": [
+      "FR-01"
+    ],
+    "H05": [
+      "FR-01"
+    ],
+    "H06": [
+      "FR-03"
+    ],
+    "H07": [
+      "NF-03"
+    ],
+    "H08": [
+      "NF-02",
+      "SR-05"
+    ],
+    "H09": [
+      "NF-02",
+      "SR-03"
+    ],
+    "H10": [
+      "NF-02",
+      "SR-01"
+    ],
+    "H11": [
+      "FR-03",
+      "NF-02"
+    ],
+    "H12": [
+      "FR-02",
+      "NF-02"
+    ],
+    "H13": [
+      "FR-04",
+      "NF-01"
+    ],
+    "H14": [
+      "FR-02",
+      "NF-01"
+    ],
+    "H15": [
+      "FR-07",
+      "NF-01"
+    ],
+    "H16": [
+      "FR-05",
+      "NF-01"
+    ],
+    "H17": [
+      "NF-01"
+    ],
+    "H18": [
+      "NF-01"
+    ],
+    "H19": [
+      "NF-01",
+      "SR-06"
+    ],
+    "H20": [
+      "NF-01",
+      "SR-05"
+    ],
+    "H21": [
+      "NF-03",
+      "SR-01"
+    ],
+    "H22": [
+      "FR-05",
+      "SR-02"
+    ],
+    "H23": [
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-08"
+    ],
+    "H24": [
+      "FR-06"
+    ],
+    "W01": [
+      "UI-01"
+    ],
+    "W02": [
+      "UI-01"
+    ],
+    "W03": [
+      "UI-02"
+    ],
+    "W04": [
+      "UI-04"
+    ],
+    "W05": [
+      "UI-01",
+      "UI-04"
+    ],
+    "W06": [
+      "UI-04"
+    ],
+    "W07": [
+      "UI-04"
+    ],
+    "U07": [
+      "UI-01"
+    ],
+    "U08": [
+      "UI-01"
+    ],
+    "U09": [
+      "UI-01",
+      "UI-05"
+    ],
+    "U10": [
+      "UI-04"
+    ],
+    "U11": [
+      "UI-04"
+    ],
+    "U12": [
+      "UI-04"
+    ],
+    "U13": [
+      "UI-04"
+    ],
+    "U14": [
+      "UI-03",
+      "SR-02"
+    ],
+    "U15": [
+      "UI-03"
+    ],
+    "U16": [
+      "UI-03"
+    ],
+    "U17": [
+      "UI-03"
+    ],
+    "U18": [
+      "UI-04",
+      "SR-02"
+    ],
+    "U19": [
+      "UI-03"
+    ],
+    "U20": [
+      "UI-02"
+    ],
+    "U21": [
+      "UI-02"
+    ],
+    "U22": [
+      "UI-02"
+    ],
+    "U23": [
+      "UI-02"
+    ],
+    "U24": [
+      "UI-02",
+      "UI-04"
+    ],
+    "U25": [
+      "UI-05"
+    ],
+    "U26": [
+      "UI-05"
+    ],
+    "H25": [
+      "FR-07",
+      "FR-06"
+    ],
+    "O01": [
+      "NF-04"
+    ],
+    "O02": [
+      "NF-04",
+      "NF-06"
+    ],
+    "O03": [
+      "NF-04",
+      "SR-02"
+    ],
+    "O04": [
+      "NF-04",
+      "SR-06"
+    ],
+    "O05": [
+      "NF-04"
+    ],
+    "O06": [
+      "NF-03",
+      "SR-03"
+    ],
+    "P01": [
+      "NF-05"
+    ],
+    "P02": [
+      "NF-05",
+      "NF-06"
+    ],
+    "P03": [
+      "NF-06",
+      "FR-01"
+    ],
+    "P04": [
+      "NF-06",
+      "NF-04"
+    ],
+    "P05": [
+      "NF-04",
+      "NF-06"
+    ],
+    "P06": [
+      "NF-06"
+    ],
+    "P07": [
+      "NF-05"
+    ],
+    "P08": [
+      "NF-06"
+    ],
+    "A01": [
+      "FR-03",
+      "FR-09"
+    ],
+    "A02": [
+      "FR-09"
+    ],
+    "A03": [
+      "FR-05",
+      "FR-08",
+      "SR-05"
+    ],
+    "A04": [
+      "FR-05",
+      "FR-08"
+    ],
+    "A05": [
+      "SR-07",
+      "UI-06"
+    ],
+    "A06": [
+      "UI-07",
+      "FR-06"
+    ],
+    "U27": [
+      "UI-06"
+    ],
+    "U28": [
+      "UI-06"
+    ],
+    "U29": [
+      "UI-06",
+      "FR-05"
+    ],
+    "U30": [
+      "UI-06",
+      "FR-05"
+    ],
+    "U31": [
+      "UI-06"
+    ],
+    "U32": [
+      "UI-07",
+      "SR-07"
+    ],
+    "U33": [
+      "UI-07"
+    ],
+    "U34": [
+      "UI-08"
+    ],
+    "U35": [
+      "UI-07"
+    ],
+    "C01": [
+      "DOC-01"
+    ],
+    "C02": [
+      "DOC-01"
+    ],
+    "C03": [
+      "DOC-01",
+      "NF-02"
+    ],
+    "C04": [
+      "DOC-01",
+      "SR-01",
+      "NF-03"
+    ],
+    "C05": [
+      "DOC-01"
+    ],
+    "C06": [
+      "DOC-01",
+      "SR-02"
+    ],
+    "U36": [
+      "UI-06",
+      "NF-01"
+    ],
+    "D01": [
+      "DEP-01"
+    ],
+    "D02": [
+      "DEP-01"
+    ],
+    "D03": [
+      "DEP-01"
+    ],
+    "D04": [
+      "DEP-01"
+    ],
+    "D05": [
+      "DEP-01",
+      "NF-03"
+    ],
+    "D06": [
+      "DEP-01",
+      "NF-05"
+    ]
+  }
+}

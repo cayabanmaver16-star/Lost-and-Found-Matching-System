@@ -1,0 +1,215 @@
+Resolving dependencies...
+Downloading packages...
+  cupertino_icons 1.0.9 (2.0.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.4 available)
+Got dependencies!
+5 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading C:/Project 18/lostfound/app/test/ui_state_test.dart
+00:00 +0: U07 sign-in failure shows the server message and stays on the sign-in screen
+00:01 +1: U08 account lockout (429) shows a wait message, not a raw error
+00:01 +2: U09 successful sign-in opens the home shell; student has no Manual queue destination
+00:02 +3: U10 reports list shows a loading indicator first, then the data
+00:02 +4: U11 server error (500) shows "Server error" and Try again recovers
+══╡ EXCEPTION CAUGHT BY GESTURE ╞═══════════════════════════════════════════════════════════════════
+The following assertion was thrown while handling a gesture:
+setState() callback argument returned a Future.
+The setState() method on _AsyncListState#09af4 was called with a closure or method that returned a
+Future. Maybe it is marked as "async".
+Instead of performing asynchronous work inside a call to setState(), first execute the work (without
+updating the widget state), and then synchronously update the state inside a call to setState().
+
+When the exception was thrown, this was the stack:
+#0      State.setState.<anonymous closure> (package:flutter/src/widgets/framework.dart:1204:9)
+#1      State.setState (package:flutter/src/widgets/framework.dart:1220:6)
+#2      _AsyncListState.reload (package:lostfound_app/main.dart:198:20)
+#3      _InkResponseState.handleTap (package:flutter/src/material/ink_well.dart:1224:21)
+#4      GestureRecognizer.invokeCallback (package:flutter/src/gestures/recognizer.dart:362:24)
+#5      TapGestureRecognizer.handleTapUp (package:flutter/src/gestures/tap.dart:758:11)
+#6      BaseTapGestureRecognizer._checkUp (package:flutter/src/gestures/tap.dart:383:5)
+#7      BaseTapGestureRecognizer.handlePrimaryPointer (package:flutter/src/gestures/tap.dart:314:7)
+#8      PrimaryPointerGestureRecognizer.handleEvent (package:flutter/src/gestures/recognizer.dart:738:9)
+#9      PointerRouter._dispatch (package:flutter/src/gestures/pointer_router.dart:97:12)
+#10     PointerRouter._dispatchEventToRoutes.<anonymous closure> (package:flutter/src/gestures/pointer_router.dart:140:9)
+#11     _LinkedHashMapMixin.forEach (dart:_compact_hash:721:13)
+#12     PointerRouter._dispatchEventToRoutes (package:flutter/src/gestures/pointer_router.dart:138:18)
+#13     PointerRouter.route (package:flutter/src/gestures/pointer_router.dart:128:7)
+#14     GestureBinding.handleEvent (package:flutter/src/gestures/binding.dart:538:19)
+#15     GestureBinding.dispatchEvent (package:flutter/src/gestures/binding.dart:508:22)
+#16     RendererBinding.dispatchEvent (package:flutter/src/rendering/binding.dart:473:11)
+#17     GestureBinding._handlePointerEventImmediately (package:flutter/src/gestures/binding.dart:447:7)
+#18     GestureBinding.handlePointerEvent (package:flutter/src/gestures/binding.dart:404:5)
+#19     TestWidgetsFlutterBinding.handlePointerEventForSource.<anonymous closure> (package:flutter_test/src/binding.dart:1571:42)
+#20     TestWidgetsFlutterBinding.withPointerEventSource (package:flutter_test/src/binding.dart:1581:11)
+#21     TestWidgetsFlutterBinding.handlePointerEventForSource (package:flutter_test/src/binding.dart:1571:5)
+#22     WidgetTester.sendEventToBinding.<anonymous closure> (package:flutter_test/src/widget_tester.dart:869:15)
+#25     TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#26     WidgetTester.sendEventToBinding (package:flutter_test/src/widget_tester.dart:868:27)
+#27     TestGesture.up.<anonymous closure> (package:flutter_test/src/test_pointer.dart:587:26)
+#30     TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#31     TestGesture.up (package:flutter_test/src/test_pointer.dart:580:27)
+#32     WidgetController.tapAt.<anonymous closure> (package:flutter_test/src/controller.dart:1155:21)
+<asynchronous suspension>
+#33     TestAsyncUtils.guard.<anonymous closure> (package:flutter_test/src/test_async_utils.dart:130:27)
+<asynchronous suspension>
+#34     main.<anonymous closure> (file:///C:/Project%2018/lostfound/app/test/ui_state_test.dart:83:5)
+<asynchronous suspension>
+#35     testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#36     TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided 5 frames from dart:async and package:stack_trace)
+
+Handler: "onTap"
+Recognizer:
+  TapGestureRecognizer#18972
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextContainingWidgetFinder:<Found 0 widgets with text containing R-0001: []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///C:/Project%2018/lostfound/app/test/ui_state_test.dart:85:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///C:/Project%2018/lostfound/app/test/ui_state_test.dart line 85
+The test description was:
+  U11 server error (500) shows "Server error" and Try again recovers
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following message was thrown:
+Multiple exceptions (2) were detected during the running of the current test, and at least one was
+unexpected.
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +4 -1: U11 server error (500) shows "Server error" and Try again recovers [E]
+  Test failed. See exception logs above.
+  The test description was: U11 server error (500) shows "Server error" and Try again recovers
+  
+00:02 +4 -1: U12 [D15] a non-JSON gateway error page (502 HTML) is shown as a server error, not a crash
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Server error": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///C:/Project%2018/lostfound/app/test/ui_state_test.dart:93:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///C:/Project%2018/lostfound/app/test/ui_state_test.dart line 93
+The test description was:
+  U12 [D15] a non-JSON gateway error page (502 HTML) is shown as a server error, not a crash
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +4 -2: U12 [D15] a non-JSON gateway error page (502 HTML) is shown as a server error, not a crash [E]
+  Test failed. See exception logs above.
+  The test description was: U12 [D15] a non-JSON gateway error page (502 HTML) is shown as a server error, not a crash
+  
+00:02 +4 -2: U13 network failure while loading shows Network problem with retry
+00:02 +5 -2: U14 students never see Verify/Reject/Release controls
+00:02 +6 -2: U15 staff see Verify/Reject on a candidate and Release on a verified match
+00:02 +7 -2: U16 tapping Verify posts the decision to the right endpoint and refreshes the list
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+setState() callback argument returned a Future.
+The setState() method on _AsyncListState#1c101 was called with a closure or method that returned a
+Future. Maybe it is marked as "async".
+Instead of performing asynchronous work inside a call to setState(), first execute the work (without
+updating the widget state), and then synchronously update the state inside a call to setState().
+
+When the exception was thrown, this was the stack:
+#0      State.setState.<anonymous closure> (package:flutter/src/widgets/framework.dart:1204:9)
+#1      State.setState (package:flutter/src/widgets/framework.dart:1220:6)
+#2      _AsyncListState.reload (package:lostfound_app/main.dart:198:20)
+#3      MatchesScreen._act (package:lostfound_app/main.dart:415:13)
+<asynchronous suspension>
+
+The test description was:
+  U16 tapping Verify posts the decision to the right endpoint and refreshes the list
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +7 -3: U16 tapping Verify posts the decision to the right endpoint and refreshes the list [E]
+  Test failed. See exception logs above.
+  The test description was: U16 tapping Verify posts the decision to the right endpoint and refreshes the list
+  
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test (but after the test had completed):
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Release item": []>
+   Which: means none were found but one was expected
+list reloads and now offers Release
+
+When the exception was thrown, this was the stack:
+#0      fail (package:matcher/src/expect/expect.dart:187:31)
+#1      _expect (package:matcher/src/expect/expect.dart:182:3)
+#2      expect (package:matcher/src/expect/expect.dart:65:3)
+#3      expect (package:flutter_test/src/widget_tester.dart:473:18)
+#4      main.<anonymous closure> (file:///C:/Project%2018/lostfound/app/test/ui_state_test.dart:138:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  Test failed. See exception logs above.
+  The test description was: U16 tapping Verify posts the decision to the right endpoint and refreshes the list
+  
+00:03 +7 -3: U17 conflict of interest (403) on Verify is shown to the user and the list is unchanged
+00:03 +8 -3: U18 manual queue returns 403 for a student: "Not authorized" and no retry button
+00:03 +9 -3: U19 manual queue lists a failed notification with a Re-send action
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+setState() callback argument returned a Future.
+The setState() method on _AsyncListState#33f72 was called with a closure or method that returned a
+Future. Maybe it is marked as "async".
+Instead of performing asynchronous work inside a call to setState(), first execute the work (without
+updating the widget state), and then synchronously update the state inside a call to setState().
+
+When the exception was thrown, this was the stack:
+#0      State.setState.<anonymous closure> (package:flutter/src/widgets/framework.dart:1204:9)
+#1      State.setState (package:flutter/src/widgets/framework.dart:1220:6)
+#2      _AsyncListState.reload (package:lostfound_app/main.dart:198:20)
+#3      ManualQueueScreen.build.<anonymous closure>.<anonymous closure> (package:lostfound_app/main.dart:481:35)
+<asynchronous suspension>
+
+The test description was:
+  U19 manual queue lists a failed notification with a Re-send action
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +9 -4: U19 manual queue lists a failed notification with a Re-send action [E]
+  Test failed. See exception logs above.
+  The test description was: U19 manual queue lists a failed notification with a Re-send action
+  
+00:03 +9 -4: U20 report form shows server-side field errors under the fields (422)
+00:03 +10 -4: U21 duplicate report (409) is explained to the user
+00:04 +11 -4: U22 successful submit shows the match count and clears the form
+00:04 +12 -4: U23 submit button is disabled with a progress indicator while the request is in flight
+00:04 +13 -4: U24 network failure on submit shows an error message and re-enables the button
+00:04 +14 -4: U25 responsive layout (wide, 1000 px): navigation rail; staff get the Manual queue tab
+00:04 +15 -4: U26 responsive layout (phone, 400 px): bottom bar, no overflow on the report form
+00:05 +16 -4: Some tests failed.
+
+Failing tests:
+  C:/Project 18/lostfound/app/test/ui_state_test.dart: U11 server error (500) shows "Server error" and Try again recovers
+  C:/Project 18/lostfound/app/test/ui_state_test.dart: U12 [D15] a non-JSON gateway error page (502 HTML) is shown as a server error, not a crash
+  C:/Project 18/lostfound/app/test/ui_state_test.dart: U16 tapping Verify posts the decision to the right endpoint and refreshes the list
+  C:/Project 18/lostfound/app/test/ui_state_test.dart: U19 manual queue lists a failed notification with a Re-send action

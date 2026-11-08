@@ -1,0 +1,23 @@
+{
+  "name": "lostfound-api",
+  "version": "0.17.0",
+  "description": "Lost-and-Found Matching System API (Week 13 - SA7 automation foundation)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node scripts/run-tests.js",
+    "test:node": "node --test test/workflow.test.js test/security.test.js test/hardening.test.js test/ops.test.js test/perf.test.js test/acceptance.test.js test/contract.test.js test/static.test.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^8.7.3",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3"
+  },
+  "devDependencies": {
+    "@apidevtools/swagger-parser": "^10.1.1",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  }
+}

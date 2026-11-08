@@ -1,0 +1,50 @@
+{
+  "totalBytes": 42004263,
+  "totalGzip": 14109394,
+  "files": 39,
+  "firstLoadApprox": {
+    "files": [
+      "canvaskit/canvaskit.wasm",
+      "main.dart.js",
+      "canvaskit/canvaskit.js",
+      "flutter_bootstrap.js",
+      "flutter.js",
+      "index.html",
+      "manifest.json"
+    ],
+    "bytes": 10150483,
+    "gzip": 3799357
+  },
+  "top": [
+    {
+      "file": "canvaskit/canvaskit.wasm",
+      "bytes": 7284602,
+      "gzip": 2944687
+    },
+    {
+      "file": "canvaskit/chromium/canvaskit.wasm",
+      "bytes": 5428806,
+      "gzip": 2081984
+    },
+    {
+      "file": "canvaskit/skwasm_heavy.wasm",
+      "bytes": 5216217,
+      "gzip": 2314198
+    },
+    {
+      "file": "canvaskit/webparagraph/canvaskit.wasm",
+      "bytes": 3729129,
+      "gzip": 1416637
+    },
+    {
+      "file": "canvaskit/skwasm.wasm",
+      "bytes": 3593715,
+      "gzip": 1555499
+    },
+    {
+      "file": "canvaskit/wimp.wasm",
+      "bytes": 3581677,
+      "gzip": 1468295
+    }
+  ]
+}

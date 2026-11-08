@@ -1,0 +1,422 @@
+✔ H01 description boundaries: 4 rejected, 5 accepted, 300 accepted, 301 rejected, whitespace-only rejected (666.0768ms)
+✔ H02 location boundaries: 1 rejected, 2 accepted, 100 accepted, 101 rejected (518.4755ms)
+✖ H03 [D1] a user in UTC+8 may report an item lost "today" even while UTC is still the previous day (456.7109ms)
+  AssertionError [ERR_ASSERTION]: local "today" must be accepted
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:43:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 422,
+    expected: 201,
+    operator: '=='
+  }
+
+✖ H04 [D9] event date older than 730 days is rejected; exactly 730 days accepted (486.7327ms)
+  AssertionError [ERR_ASSERTION]: 201 == 422
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:50:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 422,
+    operator: '=='
+  }
+
+✖ H05 [D12] impossible calendar dates (Feb 30, month 13, day 00) are rejected (468.7371ms)
+  AssertionError [ERR_ASSERTION]: 2026-02-30
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:56:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 422,
+    operator: '=='
+  }
+
+✖ H06 [D11] matching threshold: same category + same day with NO shared words is not a candidate (2.0873ms)
+  AssertionError [ERR_ASSERTION]: score 50 must stay below 50
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:63:10)
+      at Test.runInAsyncScope (node:async_hooks:206:9)
+      at Test.run (node:internal/test_runner/test:631:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+      at Test.postRun (node:internal/test_runner/test:715:19)
+      at Test.run (node:internal/test_runner/test:673:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+✖ H07 list limit parameter: default, bounds and junk values never break the API (528.5352ms)
+  AssertionError [ERR_ASSERTION]: 1 == 2
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:70:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: '=='
+  }
+
+✔ H08 content-type handling: charset parameter OK; wrong or missing body yields 422, never 500 (480.638ms)
+✔ H09 CORS preflight: allowed origin gets methods/headers; disallowed origin gets none (347.5265ms)
+✖ H10 [D5] Authorization scheme is case-insensitive; query-string tokens and sloppy headers are not accepted (423.9368ms)
+  AssertionError [ERR_ASSERTION]: 401 == 200
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:100:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 401,
+    expected: 200,
+    operator: '=='
+  }
+
+✔ H11 [D2] accents and case are ignored when matching (Cafe vs Café, nino vs niño) (545.1321ms)
+✖ H12 [D2] non-Latin descriptions are stored intact and different texts are NOT flagged as duplicates (471.796ms)
+  AssertionError [ERR_ASSERTION]: two different Japanese descriptions must not collide as duplicates
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:117:39)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 409,
+    expected: 201,
+    operator: '=='
+  }
+
+✔ H13 retry policy: exactly 3 attempts with 1000 ms then 2000 ms backoff, then manual queue (2.4832ms)
+✔ H14 identical concurrent submissions create exactly one report (duplicate control is race-free) (868.3524ms)
+✖ H15 [D4] double-clicking Re-send does not deliver twice (839.7478ms)
+  AssertionError [ERR_ASSERTION]: the notification must be sent once
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:145:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 1,
+    operator: '=='
+  }
+
+✖ H16 [D3] a found item cannot be released to two different claimants (691.9382ms)
+  AssertionError [ERR_ASSERTION]: item already released to someone else
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:159:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 409,
+    operator: '=='
+  }
+
+✖ H17 [D6] persistence is atomic: a failed write leaves the previous data file intact (11.2537ms)
+  AssertionError [ERR_ASSERTION]: previous good file must survive a crash mid-write
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:169:10)
+      at Test.runInAsyncScope (node:async_hooks:206:9)
+      at Test.run (node:internal/test_runner/test:631:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+      at Test.postRun (node:internal/test_runner/test:715:19)
+      at Test.run (node:internal/test_runner/test:673:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '{\n  "seq":',
+    expected: '{\n  "seq": 0,\n  "reports": [\n    {\n      "id": "R-0001"\n    }\n  ],\n  "matches": [],\n  "notifications": [],\n  "manualQueue": [],\n  "audit": []\n}',
+    operator: '=='
+  }
+
+✖ H18 [D6] persistence round-trip keeps ids monotonic; corrupt file falls back to last good backup or fails with a clear message (11.6078ms)
+  SyntaxError [Error]: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at new Store (C:\Project 18\lostfound\api\src\store.js:10:55)
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:178:21)
+      at Test.runInAsyncScope (node:async_hooks:206:9)
+      at Test.run (node:internal/test_runner/test:631:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+      at Test.postRun (node:internal/test_runner/test:715:19)
+      at Test.run (node:internal/test_runner/test:673:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+
+✔ H19 error path: an unexpected failure returns a generic 500, leaks nothing, and the server stays up (436.3723ms)
+✔ H20 robustness sweep: 60 hostile requests never cause a 5xx and the server stays healthy (749.8205ms)
+✖ H21 [D7] login-failure tracking and token revocation lists are bounded (no memory growth under attack) (5622.3344ms)
+  AssertionError [ERR_ASSERTION]: tracked 80 identities, cap is 20
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:206:10)
+      at Test.runInAsyncScope (node:async_hooks:206:9)
+      at Test.run (node:internal/test_runner/test:631:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+      at Test.postRun (node:internal/test_runner/test:715:19)
+      at Test.run (node:internal/test_runner/test:673:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+✖ H22 [D8] separation of duties: staff cannot verify or release a match for their own report (542.4652ms)
+  AssertionError [ERR_ASSERTION]: 200 == 403
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:220:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 403,
+    operator: '=='
+  }
+
+✔ H23 end-to-end across roles: lost -> found -> notify -> verify -> release -> closed, with audit trail (654.9166ms)
+✖ H24 aging job is idempotent and ignores closed/disposed reports (516.5021ms)
+  AssertionError [ERR_ASSERTION]: 1 == 0
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:253:105)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: '=='
+  }
+
+ℹ tests 24
+ℹ suites 0
+ℹ pass 10
+ℹ fail 14
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 150015.0241
+
+✖ failing tests:
+
+test at test\hardening.test.js:40:1
+✖ H03 [D1] a user in UTC+8 may report an item lost "today" even while UTC is still the previous day (456.7109ms)
+  AssertionError [ERR_ASSERTION]: local "today" must be accepted
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:43:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 422,
+    expected: 201,
+    operator: '=='
+  }
+
+test at test\hardening.test.js:46:1
+✖ H04 [D9] event date older than 730 days is rejected; exactly 730 days accepted (486.7327ms)
+  AssertionError [ERR_ASSERTION]: 201 == 422
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:50:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 422,
+    operator: '=='
+  }
+
+test at test\hardening.test.js:53:1
+✖ H05 [D12] impossible calendar dates (Feb 30, month 13, day 00) are rejected (468.7371ms)
+  AssertionError [ERR_ASSERTION]: 2026-02-30
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:56:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 201,
+    expected: 422,
+    operator: '=='
+  }
+
+test at test\hardening.test.js:60:1
+✖ H06 [D11] matching threshold: same category + same day with NO shared words is not a candidate (2.0873ms)
+  AssertionError [ERR_ASSERTION]: score 50 must stay below 50
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:63:10)
+      at Test.runInAsyncScope (node:async_hooks:206:9)
+      at Test.run (node:internal/test_runner/test:631:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+      at Test.postRun (node:internal/test_runner/test:715:19)
+      at Test.run (node:internal/test_runner/test:673:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+test at test\hardening.test.js:67:1
+✖ H07 list limit parameter: default, bounds and junk values never break the API (528.5352ms)
+  AssertionError [ERR_ASSERTION]: 1 == 2
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:70:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: '=='
+  }
+
+test at test\hardening.test.js:96:1
+✖ H10 [D5] Authorization scheme is case-insensitive; query-string tokens and sloppy headers are not accepted (423.9368ms)
+  AssertionError [ERR_ASSERTION]: 401 == 200
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:100:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 401,
+    expected: 200,
+    operator: '=='
+  }
+
+test at test\hardening.test.js:113:1
+✖ H12 [D2] non-Latin descriptions are stored intact and different texts are NOT flagged as duplicates (471.796ms)
+  AssertionError [ERR_ASSERTION]: two different Japanese descriptions must not collide as duplicates
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:117:39)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 409,
+    expected: 201,
+    operator: '=='
+  }
+
+test at test\hardening.test.js:137:1
+✖ H15 [D4] double-clicking Re-send does not deliver twice (839.7478ms)
+  AssertionError [ERR_ASSERTION]: the notification must be sent once
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:145:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 1,
+    operator: '=='
+  }
+
+test at test\hardening.test.js:148:1
+✖ H16 [D3] a found item cannot be released to two different claimants (691.9382ms)
+  AssertionError [ERR_ASSERTION]: item already released to someone else
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:159:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 409,
+    operator: '=='
+  }
+
+test at test\hardening.test.js:162:1
+✖ H17 [D6] persistence is atomic: a failed write leaves the previous data file intact (11.2537ms)
+  AssertionError [ERR_ASSERTION]: previous good file must survive a crash mid-write
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:169:10)
+      at Test.runInAsyncScope (node:async_hooks:206:9)
+      at Test.run (node:internal/test_runner/test:631:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+      at Test.postRun (node:internal/test_runner/test:715:19)
+      at Test.run (node:internal/test_runner/test:673:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '{\n  "seq":',
+    expected: '{\n  "seq": 0,\n  "reports": [\n    {\n      "id": "R-0001"\n    }\n  ],\n  "matches": [],\n  "notifications": [],\n  "manualQueue": [],\n  "audit": []\n}',
+    operator: '=='
+  }
+
+test at test\hardening.test.js:173:1
+✖ H18 [D6] persistence round-trip keeps ids monotonic; corrupt file falls back to last good backup or fails with a clear message (11.6078ms)
+  SyntaxError [Error]: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at new Store (C:\Project 18\lostfound\api\src\store.js:10:55)
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:178:21)
+      at Test.runInAsyncScope (node:async_hooks:206:9)
+      at Test.run (node:internal/test_runner/test:631:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+      at Test.postRun (node:internal/test_runner/test:715:19)
+      at Test.run (node:internal/test_runner/test:673:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+
+test at test\hardening.test.js:202:1
+✖ H21 [D7] login-failure tracking and token revocation lists are bounded (no memory growth under attack) (5622.3344ms)
+  AssertionError [ERR_ASSERTION]: tracked 80 identities, cap is 20
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:206:10)
+      at Test.runInAsyncScope (node:async_hooks:206:9)
+      at Test.run (node:internal/test_runner/test:631:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+      at Test.postRun (node:internal/test_runner/test:715:19)
+      at Test.run (node:internal/test_runner/test:673:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  }
+
+test at test\hardening.test.js:214:1
+✖ H22 [D8] separation of duties: staff cannot verify or release a match for their own report (542.4652ms)
+  AssertionError [ERR_ASSERTION]: 200 == 403
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:220:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 403,
+    operator: '=='
+  }
+
+test at test\hardening.test.js:245:1
+✖ H24 aging job is idempotent and ignores closed/disposed reports (516.5021ms)
+  AssertionError [ERR_ASSERTION]: 1 == 0
+      at TestContext.<anonymous> (C:\Project 18\lostfound\api\test\hardening.test.js:253:105)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.run (node:internal/test_runner/test:632:9)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:374:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: '=='
+  }
