@@ -9,6 +9,8 @@ PFEBSIT 002, University of La Salette. Flutter Web UI + Node.js/Express API. Con
 | `docs/database/` | Data model description and test-only seed accounts |
 | `docs/` | Weekly reports (Weeks 13-18), ADRs, diagrams, runbook, UAT and performance evidence, known limitations, defense pack, changelog, contributing guide |
 
+**New here? Read the [User Manual](USER_MANUAL.md)** for step-by-step instructions with screenshots.
+
 ## Run
 ```
 cd backend
