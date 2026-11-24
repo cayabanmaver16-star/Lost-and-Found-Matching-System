@@ -1,0 +1,6 @@
+# Keep shell scripts with Unix line endings (they fail on Windows CRLF) and never alter binary files.
+*.sh text eol=lf
+*.docx binary
+*.png binary
+*.jpg binary
+*.svg text
