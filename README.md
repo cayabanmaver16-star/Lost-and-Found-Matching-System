@@ -27,6 +27,18 @@ flutter test
 ```
 Test accounts: see `docs/database/seed/demo-users.json`.
 
+## Weekly reports (Weeks 13-18)
+| Week | Assessment | Report |
+|---|---|---|
+| 13 | SA7 Automation case and reliable workflow | [docs/Project18_Week13_SA7_Evidence.docx](docs/Project18_Week13_SA7_Evidence.docx) |
+| 14 | SA8 / IA5 Secure architecture and data exchange | [docs/Project18_Week14_SA8_IA5_Evidence.docx](docs/Project18_Week14_SA8_IA5_Evidence.docx) |
+| 15 | IA6 Integration testing and hardening | [docs/Project18_Week15_IA6_Hardening_Report.docx](docs/Project18_Week15_IA6_Hardening_Report.docx) |
+| 16 | Performance and deployment evaluation | [docs/Project18_Week16_Performance_Deployment_Evaluation.docx](docs/Project18_Week16_Performance_Deployment_Evaluation.docx) |
+| 17 | SA9 UAT and evaluation; AS3 advanced technical report | [SA9](docs/Project18_Week17_SA9_UAT_and_Evaluation.docx), [AS3](docs/Project18_Week17_AS3_Advanced_Technical_Report.docx) |
+| 18 | E3 Defense pack | [docs/Project18_Week18_E3_Defense_Pack.docx](docs/Project18_Week18_E3_Defense_Pack.docx) |
+
+Author: Maverick M. Cayaban, 24-11252, BSIT 3B.
+
 ## Status
 Weeks 13-18 complete. Verdict: conditional go for a supervised single-instance pilot, not unrestricted production
 (`docs/Project18_Week17_AS3_Advanced_Technical_Report.docx`, `docs/w17/KNOWN_LIMITATIONS.md`).
